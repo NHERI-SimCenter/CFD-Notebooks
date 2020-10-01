@@ -1,0 +1,12 @@
+:orphan:
+
+.. _lblLicense:
+
+*********************
+Copyright and License
+*********************
+
+The CFD-Notebooks application is copyright "The Regents of the University of California" and is licensed under the following BSD license:
+
+.. literalinclude:: LICENSE
+   :language: c++
