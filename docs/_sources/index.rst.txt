@@ -10,8 +10,8 @@ CFDN is set as a series of Jupyter notebooks, with each covering a particular to
 - Introduction to OpenFOAM and Designsafe
 - Different solvers in OpenFOAM and which to use?
 - Boundary conditions in OpenFOAM
-- Meshing with OpenFOAM (blockMesh)
-- Meshing with OpenFOAM (snappyHexMesh)
+- Meshing in OpenFOAM (blockMesh)
+- Meshing in OpenFOAM (snappyHexMesh)
 
 In the next version of CFDN, it will also include content on
 - Importing meshing into OpenFOAM
