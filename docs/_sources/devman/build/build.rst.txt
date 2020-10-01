@@ -1,0 +1,6 @@
+.. _lbl-build:
+
+How to Build?
+==================
+
+Coming soon.
