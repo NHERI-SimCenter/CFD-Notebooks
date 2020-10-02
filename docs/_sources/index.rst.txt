@@ -22,21 +22,23 @@ In the next version of CFDN, it will also include content on
 - Using wavemaker boundary conditions
 - Writing custom boundary conditions
 
+.. raw:: html
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/dcj99bUHNvY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 If there is a topic of particular interest to you, please make a feature request on our `Message Board <http://simcenter-messageboard.designsafe-ci.org/smf/index.php?board=11.0>`_ and we would be glad to add them.
 
 .. toctree::
    :maxdepth: 1
    :numbered: 2
-   :caption: User manual
+   :caption: General information
 
-   userman/acknowledgement
-   userman/about
-   userman/install
-   userman/manual
-   userman/bestpractices
-   userman/errors
-   userman/examples/examples
-   userman/copyright
+   geninfo/acknowledgement
+   geninfo/about
+   geninfo/install
+   geninfo/bestpractices
+   geninfo/errors
+   geninfo/copyright
 
 .. toctree::
    :maxdepth: 1
