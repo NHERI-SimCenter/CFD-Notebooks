@@ -3,15 +3,42 @@
 Beginner lectures
 ===================
 
-The term *tsunami* is derived from two Japanese words, namely "tsu" (meaning harbor) and "nami" (meaning wave). Some of the original literature described them as tidal waves or seismic sea waves. Tsunamis are usually created by disturbances in the crust of the Earth. The resulting uplifting of the water surface over a large area forms a train of the long-period waves. These waves generated from tsunamis have huge wavelengths. In contrast to wind-generated waves, where the periods are about one minute, the periods are of the order of one hour and more. 
+In this beginner series on OpenFOAM, we will help you understand the structure of the OpenFOAM directories and file system, creating boundary conditions, setting up a mesh using ``blockMesh`` and ``snappyHexMesh`` utilities. By the end of the lecture series, you should be able to run sample cases on Designsafe cyberinfrastructure hosted by TACC supercomputer Stampede2.
 
-Once generated, these tsunami waves travel across the ocean basin to cause great destruction at locations far from the source. Owing to their destructive nature, it is imporant to comprehend the mechanisms of their generation, propagation and predict the extent of flooding/effect of wave forces in the coastal areas that are potential to tsunamis. In these areas susceptible to tsunamis, it is imperative to build resilient structures and communities.
+Learning objectives
+---------------------
+Upon completion of this beginner series, you should have the ability to:
 
-This documentation compiles some of the basic ideas and information about tsunami events and modeling efforts.
+* Modify the files and file directories of OpenFOAM
+* Modify and setup boundary conditions
+* Mesh using ``blockMesh`` and ``snappyHexMesh`` utilities
+* Run OpenFOAM jobs on supercomputing cluster Stampede2
+* Be exposed to Agave API and Jupyter notebooks
+* Visualize OpenFOAM results using Paraview
+
+Pre-requisites
+----------------
+This is a beginner series in OpenFOAMbut requires a basic knowledge of:
+
+* Fluid Mechanics
+* Basic knowledge of using a computer
+
+Lecture notebooks
+-------------------
 
 .. toctree::
    :maxdepth: 1
 
    beginner/lecture01
    beginner/lecture02
+   beginner/lecture03
+   beginner/lecture04
+   beginner/lecture05
 
+References
+-------------
+Some books on fluid mechanics are listed below:
+
+* G. K. Batchelor, "An introduction to fluid dynamics," Cambridge University Press (ISBN: 978-0521663960)
+* J. D. Anderson, "Modern compressible flow: With historical perspective," McGraw-Hill Education (ISBN: 978-0072424430)
+* F. M. White, "Viscous fluid flow," Tata Mcgraw Hill (ISBN: 978-1259002120)

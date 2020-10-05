@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1. Lecture 01" href="beginner/lecture01.html" />
+    <link rel="next" title="1.1. Lecture 01: Getting started" href="beginner/lecture01.html" />
     <link rel="prev" title="5. Copyright and License" href="../geninfo/copyright.html" /> 
 </head>
 
@@ -99,8 +99,17 @@
 <p class="caption"><span class="caption-text">Lecture notebooks</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Beginner lectures</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="beginner/lecture01.html">1.1. Lecture 01</a></li>
-<li class="toctree-l2"><a class="reference internal" href="beginner/lecture02.html">1.2. Lecture 02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#learning-objectives">1.1. Learning objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requisites">1.2. Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-notebooks">1.3. Lecture notebooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beginner/lecture01.html">1.1. Lecture 01: Getting started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="beginner/lecture02.html">1.2. Lecture 02: Files and solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="beginner/lecture03.html">1.3. Lecture 03: Boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="beginner/lecture04.html">1.4. Lecture 04: blockMesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="beginner/lecture05.html">1.5. Lecture 05: snappyHexMesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">1.4. References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="intermediate.html">2. Intermediate lectures</a></li>
@@ -171,13 +180,64 @@
             
   <div class="section" id="beginner-lectures">
 <span id="lbl-beginner"></span><h1><span class="section-number">1. </span>Beginner lectures<a class="headerlink" href="#beginner-lectures" title="Permalink to this headline">¶</a></h1>
-<p>The term <em>tsunami</em> is derived from two Japanese words, namely “tsu” (meaning harbor) and “nami” (meaning wave). Some of the original literature described them as tidal waves or seismic sea waves. Tsunamis are usually created by disturbances in the crust of the Earth. The resulting uplifting of the water surface over a large area forms a train of the long-period waves. These waves generated from tsunamis have huge wavelengths. In contrast to wind-generated waves, where the periods are about one minute, the periods are of the order of one hour and more.</p>
-<p>Once generated, these tsunami waves travel across the ocean basin to cause great destruction at locations far from the source. Owing to their destructive nature, it is imporant to comprehend the mechanisms of their generation, propagation and predict the extent of flooding/effect of wave forces in the coastal areas that are potential to tsunamis. In these areas susceptible to tsunamis, it is imperative to build resilient structures and communities.</p>
-<p>This documentation compiles some of the basic ideas and information about tsunami events and modeling efforts.</p>
+<p>In this beginner series on OpenFOAM, we will help you understand the structure of the OpenFOAM directories and file system, creating boundary conditions, setting up a mesh using <code class="docutils literal notranslate"><span class="pre">blockMesh</span></code> and <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code> utilities. By the end of the lecture series, you should be able to run sample cases on Designsafe cyberinfrastructure hosted by TACC supercomputer Stampede2.</p>
+<div class="section" id="learning-objectives">
+<h2><span class="section-number">1.1. </span>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>Upon completion of this beginner series, you should have the ability to:</p>
+<ul class="simple">
+<li><p>Modify the files and file directories of OpenFOAM</p></li>
+<li><p>Modify and setup boundary conditions</p></li>
+<li><p>Mesh using <code class="docutils literal notranslate"><span class="pre">blockMesh</span></code> and <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code> utilities</p></li>
+<li><p>Run OpenFOAM jobs on supercomputing cluster Stampede2</p></li>
+<li><p>Be exposed to Agave API and Jupyter notebooks</p></li>
+<li><p>Visualize OpenFOAM results using Paraview</p></li>
+</ul>
+</div>
+<div class="section" id="pre-requisites">
+<h2><span class="section-number">1.2. </span>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+<p>This is a beginner series in OpenFOAMbut requires a basic knowledge of:</p>
+<ul class="simple">
+<li><p>Fluid Mechanics</p></li>
+<li><p>Basic knowledge of using a computer</p></li>
+</ul>
+</div>
+<div class="section" id="lecture-notebooks">
+<h2><span class="section-number">1.3. </span>Lecture notebooks<a class="headerlink" href="#lecture-notebooks" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="beginner/lecture01.html">1.1. Lecture 01</a></li>
-<li class="toctree-l1"><a class="reference internal" href="beginner/lecture02.html">1.2. Lecture 02</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/lecture01.html">1.1. Lecture 01: Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/lecture02.html">1.2. Lecture 02: Files and solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/lecture03.html">1.3. Lecture 03: Boundary conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/lecture04.html">1.4. Lecture 04: blockMesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/lecture05.html">1.5. Lecture 05: snappyHexMesh</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">1.4. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>Some books on fluid mechanics are listed below:</p>
+<ul class="simple">
+<li><ol class="upperalpha simple" start="7">
+<li><ol class="upperalpha simple" start="11">
+<li><p>Batchelor, “An introduction to fluid dynamics,” Cambridge University Press (ISBN: 978-0521663960)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="4">
+<li><p>Anderson, “Modern compressible flow: With historical perspective,” McGraw-Hill Education (ISBN: 978-0072424430)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="6">
+<li><ol class="upperalpha simple" start="13">
+<li><p>White, “Viscous fluid flow,” Tata Mcgraw Hill (ISBN: 978-1259002120)</p></li>
+</ol>
+</li>
+</ol>
+</li>
 </ul>
 </div>
 </div>
