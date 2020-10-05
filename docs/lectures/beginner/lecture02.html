@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.2. Lecture 02: Files and solvers &mdash; CFD-Notebooks 1.0 documentation</title>
+  <title>Lecture 02: Files and solvers &mdash; CFD-Notebooks 1.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.3. Lecture 03: Boundary conditions" href="lecture03.html" />
-    <link rel="prev" title="1.1. Lecture 01: Getting started" href="lecture01.html" /> 
+    <link rel="next" title="Lecture 03: Boundary conditions" href="lecture03.html" />
+    <link rel="prev" title="Lecture 01: Getting started" href="lecture01.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,11 +99,22 @@
 <p class="caption"><span class="caption-text">Lecture notebooks</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../beginner.html">1. Beginner lectures</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="lecture01.html">1.1. Lecture 01: Getting started</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1.2. Lecture 02: Files and solvers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lecture03.html">1.3. Lecture 03: Boundary conditions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lecture04.html">1.4. Lecture 04: blockMesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lecture05.html">1.5. Lecture 05: snappyHexMesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner.html#learning-objectives">1.1. Learning objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner.html#pre-requisites">1.2. Pre-requisites</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../beginner.html#lecture-notebooks">1.3. Lecture notebooks</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lecture01.html">Lecture 01: Getting started</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lecture 02: Files and solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#case-directories">Case directories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solvers">Solvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utilities-and-libraries">Utilities and Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lecture03.html">Lecture 03: Boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lecture04.html">Lecture 04: blockMesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lecture05.html">Lecture 05: snappyHexMesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../beginner.html#references">1.4. References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../intermediate.html">2. Intermediate lectures</a></li>
@@ -157,7 +168,7 @@
         
           <li><a href="../beginner.html"><span class="section-number">1. </span>Beginner lectures</a> &raquo;</li>
         
-      <li><span class="section-number">1.2. </span>Lecture 02: Files and solvers</li>
+      <li>Lecture 02: Files and solvers</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +186,152 @@
            <div itemprop="articleBody">
             
   <div class="section" id="lecture-02-files-and-solvers">
-<span id="lbl-lecture02"></span><h1><span class="section-number">1.2. </span>Lecture 02: Files and solvers<a class="headerlink" href="#lecture-02-files-and-solvers" title="Permalink to this headline">¶</a></h1>
-<p>Coming soon</p>
+<span id="lbl-lecture02"></span><h1>Lecture 02: Files and solvers<a class="headerlink" href="#lecture-02-files-and-solvers" title="Permalink to this headline">¶</a></h1>
+<p>As already discussed, OpenFOAM is basically a collection of C++ programs that can be utilized to solve differential equations. More specifically, OpenFOAM declarations belong to a namespace called foam. The OpenFOAM distribution comprises the following main directories:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code>: the core OpenFOAM libraries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">applications</span></code>: solvers and utilities</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modules</span></code>: Third-party code contributions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tutorials</span></code>: test-cases that demonstrate a wide-range of OpenFOAM functionality</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doc</span></code>: documentation</p></li>
+</ul>
+<p>The tools or directories of our present interest are applications and libraries and hence we will only be discussing these in this lecture.</p>
+<div class="section" id="case-directories">
+<h2>Case directories<a class="headerlink" href="#case-directories" title="Permalink to this headline">¶</a></h2>
+<p>This section deals with the file structure and organization of OpenFOAM cases. Normally, a user would assign a name to a case, e.g. the tutorial case of flow in a cavity is simply named cavity. This name becomes the name of a directory in which all the case files and sub-directories are stored. The tutorial cases that accompany the OpenFOAM distribution provide useful examples of the case directory structures.</p>
+<p>The basic directory structure for an OpenFOAM case, that contains the minimum set of files required to run an application is shown in figure below:</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="../../_images/CaseFiles.png"><img alt="alternate text" src="../../_images/CaseFiles.png" style="width: 400px;" /></a>
+</div>
+<p>Therefore, any OpenFOAM case must contain the following directories and these are further discussed in detail in the upcoming sub-sections</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">constant</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">system</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ul>
+<div class="section" id="constant-directory">
+<h3><code class="docutils literal notranslate"><span class="pre">constant</span></code> directory<a class="headerlink" href="#constant-directory" title="Permalink to this headline">¶</a></h3>
+<p>The files in the constant directory usually include files that provide information about constants that are used in the project. This include material properties, turbulence properties etc. In the directory <code class="docutils literal notranslate"><span class="pre">polyMesh</span></code>, the mesh data are stored (in this case the data for converted mesh). The boundary file in this <code class="docutils literal notranslate"><span class="pre">polyMesh</span></code> directory includes the mesh boundary data, e.g. type, the patch group, number of faces on this boundary and also starting face number (unique face IDs) for this boundary, e.g. <code class="docutils literal notranslate"><span class="pre">transportProperties</span></code>.</p>
+</div>
+</div>
+<div class="section" id="solvers">
+<h2>Solvers<a class="headerlink" href="#solvers" title="Permalink to this headline">¶</a></h2>
+<p>Solvers are each designed to solve a specific genre of problem in computational continuum mechanics. OpenFOAM does not have a generic solver applicable to all cases. Instead, users must choose a specific solver for a class of problems to solve. There are flow Solvers as well as non-flow (other) solvers present in the package. The flow solvers include:</p>
+<ul class="simple">
+<li><p>Basic</p></li>
+<li><p>Incompressible</p></li>
+<li><p>Compressible</p></li>
+<li><p>Heat transfer</p></li>
+<li><p>Multiphase</p></li>
+<li><p>Lagrangian particles</p></li>
+<li><p>Discrete methods</p></li>
+<li><p>Combustion</p></li>
+<li><p>DNS</p></li>
+</ul>
+<p>and the non-flow solver includes, those applicable for</p>
+<ul class="simple">
+<li><p>Electromagnetics</p></li>
+<li><p>Financial</p></li>
+<li><p>Stress analysis</p></li>
+</ul>
+<p>There are a slew of solvers available. The summary of capabilities of the solvers are as given in the table below. In the next subsections, we will look at a comprehensive list of solvers available and their utility value.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 15%" />
+<col style="width: 21%" />
+<col style="width: 20%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Solver</p></th>
+<th class="head"><p>Transient</p></th>
+<th class="head"><p>Compressible</p></th>
+<th class="head"><p>Turbulence</p></th>
+<th class="head"><p>Dynamic Mesh</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>boundaryFoam</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>icoFoam</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>pimpleFoam</p></td>
+<td><p>X</p></td>
+<td></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-odd"><td><p>laplacianFoam</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>pisoFoam</p></td>
+<td><p>X</p></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>simpleFoam</p></td>
+<td></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>sonicFoam</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="basic-solvers">
+<h3>Basic solvers<a class="headerlink" href="#basic-solvers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">laplacianFoam</span></code>: Solves a simple Laplace equation, e.g. for thermal diffusion in a solid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">potentialFoam</span></code>: Potential flow solver which solves for the velocity potential, to calculate the flux-field, from which the velocity field is obtained by reconstructing the flux</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scalarTransportFoam</span></code>: Solves the steady or transient transport equation for a passive scalar</p></li>
+</ul>
+</div>
+<div class="section" id="incompressible-flow-solvers">
+<h3>Incompressible flow solvers<a class="headerlink" href="#incompressible-flow-solvers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">boundaryFoam</span></code>: Steady-state solver for incompressible, 1D turbulent flow, typically to generate boundary layer conditions at an inlet, for use in a simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icoFoam</span></code>: Transient solver for incompressible, laminar flow of Newtonian fluids.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pimpleFoam</span></code>: Transient solver for incompressible, turbulent flow of Newtonian fluids, with optional mesh motion and mesh topology changes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pisoFoam</span></code>: Transient solver for incompressible, turbulent flow, using the PISO algorithm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">simpleFoam</span></code>: Steady-state solver for incompressible, turbulent flow, using the SIMPLE algorithm.</p></li>
+</ul>
+</div>
+<div class="section" id="compressible-solvers">
+<h3>Compressible solvers<a class="headerlink" href="#compressible-solvers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sonicFoam</span></code>: Transient solver for trans-sonic/supersonic, turbulent flow of a compressible gas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rhoPimpleFoam</span></code>: Transient solver for turbulent flow of compressible fluids for HVAC and similar applications, with optional mesh motion and mesh topology changes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rhoSimpleFoam</span></code>: Steady-state solver for turbulent flow of compressible fluids.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="utilities-and-libraries">
+<h2>Utilities and Libraries<a class="headerlink" href="#utilities-and-libraries" title="Permalink to this headline">¶</a></h2>
+<p>Utilities are tools that aid in pre-processing, mesh generation, mesh manipulation, post processing and other miscellaneous activities. They perform simple pre-and post-processing tasks mainly involving data manipulation and algebraic calculations and meshing. For example, <code class="docutils literal notranslate"><span class="pre">checkMesh</span></code> checks the validity of a mesh. Each application is designed to be executed from a terminal command line, typically reading and writing a set of data files associated with a particular case. The data files for a case are stored in a directory named after the case.</p>
+<p>Together, the <code class="docutils literal notranslate"><span class="pre">solver</span></code> and the associated <code class="docutils literal notranslate"><span class="pre">utilities</span></code> are involved in the working of an application. OpenFOAM applications are organized using a standard convention that the source code of each application is placed in a directory whose name is that of the application. The top level source file then takes the application name with the <code class="docutils literal notranslate"><span class="pre">.C</span></code> extension. For example, the source code for an application called <code class="docutils literal notranslate"><span class="pre">newApp</span></code> would reside is a directory <code class="docutils literal notranslate"><span class="pre">newApp</span></code> and the top level file would be <code class="docutils literal notranslate"><span class="pre">newApp.C</span></code> as shown in the figure below.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="../../_images/DirStruct.png"><img alt="alternate text" src="../../_images/DirStruct.png" style="width: 100px;" /></a>
+</div>
+<p>Additionally, OpenFOAM is divided into a set of pre-compiled libraries that are dynamically linked during compilation of the solvers and utilities. OpenFOAM includes an extensive collection of library functionality covering most aspects engineering flow problems such as physical modeling, boundary conditions, numerics and mesh motion.  Libraries such as those for physical models are supplied as source code so that users may conveniently add their own models to the libraries.</p>
+</div>
 </div>
 
 
