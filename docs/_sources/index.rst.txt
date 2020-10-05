@@ -7,6 +7,7 @@ CFD Notebooks
 This educational application is a series of Jupyter notebooks hosted on `DesignSafe <https://www.designsafe-ci.org>`_ that allows learner to get started with the open-source CFD tool OpenFOAM and to run it on Designsafe. It provides a foundation for all aspects of OpenFOAM, from running cases to programming, so is useful to both new users and existing users wishing to broaden their basic knowledge of OpenFOAM. The learners are exposed to running exercises and simulating cases in OpenFOAM using Designsafe's HPC computing platform, accessed directly through the Jupyter notebook. The Jupyter notebooks consist of video tutorials, DIY examples, and general reading materials. This learning tool is truly platform-independent and leverages the power of the cloud.
 
 CFDN is set as a series of Jupyter notebooks, with each covering a particular topic. Thus, advanced users can directly jump to topics of interest rather than follow a one-size-fits-all learning process. The topics covered in the beginner notebooks include:
+
 - Introduction to OpenFOAM and Designsafe
 - Different solvers in OpenFOAM and which to use?
 - Boundary conditions in OpenFOAM
@@ -14,6 +15,7 @@ CFDN is set as a series of Jupyter notebooks, with each covering a particular to
 - Meshing in OpenFOAM (snappyHexMesh)
 
 In the next version of CFDN, it will also include content on
+
 - Importing meshing into OpenFOAM
 - Turbulence models and what are these?
 - Multiphase flows and VOF
@@ -21,10 +23,6 @@ In the next version of CFDN, it will also include content on
 - Finite Volume Method and interpolations
 - Using wavemaker boundary conditions
 - Writing custom boundary conditions
-
-.. raw:: html
-
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/dcj99bUHNvY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 If there is a topic of particular interest to you, please make a feature request on our `Message Board <http://simcenter-messageboard.designsafe-ci.org/smf/index.php?board=11.0>`_ and we would be glad to add them.
 
@@ -35,32 +33,20 @@ If there is a topic of particular interest to you, please make a feature request
 
    geninfo/acknowledgement
    geninfo/about
-   geninfo/install
-   geninfo/bestpractices
+   geninfo/getting-started
    geninfo/errors
    geninfo/copyright
 
 .. toctree::
    :maxdepth: 1
    :numbered: 2
-   :caption: Technical manual
+   :caption: Lecture notebooks
 
-   techman/tsunami/tsunami
-   techman/storm/storm
-   techman/fvm/fvm
-   techman/swsolver/swsolver
-   techman/cfdsolver/cfdsolver
-   techman/surrogate/surrogate
-   techman/hydrouq/hydrouq
-
-.. toctree::
-   :maxdepth: 1
-   :numbered: 2
-   :caption: Developer manual
-
-   devman/build/build
-   devman/verify/verify
-   devman/coding/coding
+   lectures/beginner
+   lectures/intermediate
+   lectures/advanced
+   lectures/professional
+   lectures/practice-probs
 
 Contact
 =============
