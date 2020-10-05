@@ -3,4 +3,103 @@
 Lecture 02: Files and solvers
 =================================
 
-Coming soon
+As already discussed, OpenFOAM is basically a collection of C++ programs that can be utilized to solve differential equations. More specifically, OpenFOAM declarations belong to a namespace called foam. The OpenFOAM distribution comprises the following main directories:
+
+* ``src``: the core OpenFOAM libraries
+* ``applications``: solvers and utilities
+* ``modules``: Third-party code contributions
+* ``tutorials``: test-cases that demonstrate a wide-range of OpenFOAM functionality
+* ``doc``: documentation
+
+The tools or directories of our present interest are applications and libraries and hence we will only be discussing these in this lecture.
+
+Case directories
+------------------
+This section deals with the file structure and organization of OpenFOAM cases. Normally, a user would assign a name to a case, e.g. the tutorial case of flow in a cavity is simply named cavity. This name becomes the name of a directory in which all the case files and sub-directories are stored. The tutorial cases that accompany the OpenFOAM distribution provide useful examples of the case directory structures. 
+
+The basic directory structure for an OpenFOAM case, that contains the minimum set of files required to run an application is shown in figure below:
+
+.. figure:: images/CaseFiles.png
+    :width: 400px
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+Therefore, any OpenFOAM case must contain the following directories and these are further discussed in detail in the upcoming sub-sections
+
+* ``constant``
+* ``system``
+* ``0``
+
+``constant`` directory
+^^^^^^^^^^^^^^^^^^^^^^^^^
+The files in the constant directory usually include files that provide information about constants that are used in the project. This include material properties, turbulence properties etc. In the directory ``polyMesh``, the mesh data are stored (in this case the data for converted mesh). The boundary file in this ``polyMesh`` directory includes the mesh boundary data, e.g. type, the patch group, number of faces on this boundary and also starting face number (unique face IDs) for this boundary, e.g. ``transportProperties``.
+
+Solvers
+----------
+Solvers are each designed to solve a specific genre of problem in computational continuum mechanics. OpenFOAM does not have a generic solver applicable to all cases. Instead, users must choose a specific solver for a class of problems to solve. There are flow Solvers as well as non-flow (other) solvers present in the package. The flow solvers include:
+
+* Basic
+* Incompressible
+* Compressible
+* Heat transfer
+* Multiphase
+* Lagrangian particles
+* Discrete methods
+* Combustion
+* DNS
+
+and the non-flow solver includes, those applicable for
+
+* Electromagnetics
+* Financial
+* Stress analysis
+
+There are a slew of solvers available. The summary of capabilities of the solvers are as given in the table below. In the next subsections, we will look at a comprehensive list of solvers available and their utility value.
+
+==============  =========  =============  ============   =============
+Solver          Transient  Compressible   Turbulence     Dynamic Mesh
+==============  =========  =============  ============   =============
+boundaryFoam    
+icoFoam         X
+pimpleFoam      X                           X               X
+laplacianFoam   X
+pisoFoam        X                           X
+simpleFoam                                  X
+sonicFoam       X           X               X
+==============  =========  =============  ============   =============
+
+Basic solvers
+^^^^^^^^^^^^^^^
+* ``laplacianFoam``: Solves a simple Laplace equation, e.g. for thermal diffusion in a solid
+* ``potentialFoam``: Potential flow solver which solves for the velocity potential, to calculate the flux-field, from which the velocity field is obtained by reconstructing the flux
+* ``scalarTransportFoam``: Solves the steady or transient transport equation for a passive scalar
+
+Incompressible flow solvers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* ``boundaryFoam``: Steady-state solver for incompressible, 1D turbulent flow, typically to generate boundary layer conditions at an inlet, for use in a simulation.
+* ``icoFoam``: Transient solver for incompressible, laminar flow of Newtonian fluids.
+* ``pimpleFoam``: Transient solver for incompressible, turbulent flow of Newtonian fluids, with optional mesh motion and mesh topology changes.
+* ``pisoFoam``: Transient solver for incompressible, turbulent flow, using the PISO algorithm.
+* ``simpleFoam``: Steady-state solver for incompressible, turbulent flow, using the SIMPLE algorithm.
+
+Compressible solvers
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+* ``sonicFoam``: Transient solver for trans-sonic/supersonic, turbulent flow of a compressible gas.
+* ``rhoPimpleFoam``: Transient solver for turbulent flow of compressible fluids for HVAC and similar applications, with optional mesh motion and mesh topology changes.
+* ``rhoSimpleFoam``: Steady-state solver for turbulent flow of compressible fluids.
+
+Utilities and Libraries
+--------------------------
+Utilities are tools that aid in pre-processing, mesh generation, mesh manipulation, post processing and other miscellaneous activities. They perform simple pre-and post-processing tasks mainly involving data manipulation and algebraic calculations and meshing. For example, ``checkMesh`` checks the validity of a mesh. Each application is designed to be executed from a terminal command line, typically reading and writing a set of data files associated with a particular case. The data files for a case are stored in a directory named after the case.
+
+Together, the ``solver`` and the associated ``utilities`` are involved in the working of an application. OpenFOAM applications are organized using a standard convention that the source code of each application is placed in a directory whose name is that of the application. The top level source file then takes the application name with the ``.C`` extension. For example, the source code for an application called ``newApp`` would reside is a directory ``newApp`` and the top level file would be ``newApp.C`` as shown in the figure below.
+
+.. figure:: images/DirStruct.png
+    :width: 100px
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+Additionally, OpenFOAM is divided into a set of pre-compiled libraries that are dynamically linked during compilation of the solvers and utilities. OpenFOAM includes an extensive collection of library functionality covering most aspects engineering flow problems such as physical modeling, boundary conditions, numerics and mesh motion.  Libraries such as those for physical models are supplied as source code so that users may conveniently add their own models to the libraries.
+
