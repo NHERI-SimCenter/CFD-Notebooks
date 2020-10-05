@@ -1,0 +1,8 @@
+.. _lbl-advanced:
+
+Advanced lectures
+========================
+
+Coming soon!
+
+Please leave topics of interest to you by making a feature request on our `Message Board <http://simcenter-messageboard.designsafe-ci.org/smf/index.php?board=11.0>`_ and we would be glad to add them.

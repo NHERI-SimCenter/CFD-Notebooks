@@ -25,7 +25,6 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -37,7 +36,7 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Installation" href="install.html" />
+    <link rel="next" title="3. Getting started with CFDN" href="getting-started.html" />
     <link rel="prev" title="1. Acknowledgements" href="acknowledgement.html" /> 
 </head>
 
@@ -93,26 +92,17 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">1. Acknowledgements</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">3. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bestpractices.html">4. Best Practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="errors.html">5. Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copyright.html">6. Copyright and License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">3. Getting started with CFDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">4. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">5. Copyright and License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Technical manual</span></p>
+<p class="caption"><span class="caption-text">Lecture notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../techman/tsunami/tsunami.html">1. Tsunami</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../techman/storm/storm.html">2. Storm Surge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../techman/fvm/fvm.html">3. Finite Volume Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../techman/swsolver/swsolver.html">4. Shallow Water Solvers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../techman/cfdsolver/cfdsolver.html">5. CFD Solvers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../techman/surrogate/surrogate.html">6. Surrogate Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../techman/hydrouq/hydrouq.html">7. Hydro-UQ Tool</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Developer manual</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../devman/build/build.html">1. How to Build?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devman/verify/verify.html">2. Verification of Hydro-UQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devman/coding/coding.html">3. Coding Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/beginner.html">1. Beginner lectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/intermediate.html">2. Intermediate lectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/advanced.html">3. Advanced lectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/professional.html">4. Professional lectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/practice-probs.html">5. Practice Problems</a></li>
 </ul>
 
             
@@ -177,22 +167,22 @@
             
   <div class="section" id="about">
 <span id="lbl-about"></span><h1><span class="section-number">2. </span>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
-<p>Hydro-UQ is an open-source research application available at <a class="reference external" href="https://github.com/NHERI-SimCenter/HydroUQ">Hydro-UQ Github page</a>, and released under a <strong>BSD Clause 2</strong> license. The Hydro-UQ app is used to predict the response of a building and/or community(ies) subjected to water-borne hazard events. The application aims to help researchers to:</p>
+<p>CFD Notebooks is an educational application published on Designsafe and available through the <a class="reference external" href="https://simcenter.designsafe-ci.org/learning-tools/cfd-notebooks">CFD Notebooks Simcenter page</a>, and released under a <strong>BSD Clause 2</strong> license. The CFD Notebooks are a set of Jupyter notebooks aimed at senior undergraduate and early graduate students who are interested in learning OpenFOAM. It aims to help students and learners to:</p>
 <ul class="simple">
-<li><p>Couple shallow-water solvers with high-fidelity 3D CFD solvers</p></li>
-<li><p>Use CFD solvers to resolve shallow-water solutions</p></li>
-<li><p>Obtain inundation heights during tsunami and storm surges scenarios</p></li>
-<li><p>Determine velocity and flow conditions around buildings and communities</p></li>
-<li><p>Obtain building response through coupling with OpenSees</p></li>
-<li><p>Use surrogate models to quantify uncertainity</p></li>
-<li><p>Use forward UQ to develop lightning quick CFD solutions</p></li>
+<li><p>Get started with OpenFOAM and running it on a computing cluster</p></li>
+<li><p>Understand the file structure of OpenFOAM</p></li>
+<li><p>Setting up boundary conditions and their physical interpretation</p></li>
+<li><p>Meshing using blockMesh and snappyHexMesh functionalities</p></li>
+<li><p>Turbulence models available in OpenFOAM</p></li>
+<li><p>Concepts of Finite Volume Method (FVM)</p></li>
+<li><p>Post-processing capabilities in OpenFOAM</p></li>
+<li><p>Using advanced options like writing one’s own boundary conditions</p></li>
 </ul>
 <div class="align-center figure">
-<a class="reference internal image-reference" href="../_images/Hydro_UQ_01.png"><img alt="alternate text" src="../_images/Hydro_UQ_01.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/CFDN_Info.png"><img alt="alternate text" src="../_images/CFDN_Info.png" style="width: 400px;" /></a>
 </div>
-<p>This is an open-source research application, which is available at <a class="reference external" href="https://github.com/NHERI-SimCenter/HydroUQ">Hydro-UQ Github page</a>, is released under a <strong>BSD Clause 2</strong> license. The Hydro-UQ app can be used to predict the response of a building and/or communitiy(ies) subjected to water-borne hazard events. The application is focused on quantifying the uncertainties in the predicted response, given the that the properties of the buildings and the initiation events are not known exactly, and that both the simulation software and the user make simplifying assumptions in the numerical modeling of that structure. In this application, the user is required to characterize the uncertainties in the input. The application will, after utilizing the users selected sampling method, provide information that characterizes the uncertainties in the computed response measures. As the computations to make these determinations can be prohibitively expensive to perform on a user’s local computer, the user has the option to perform the computations remotely on the Stampede2 supercomputer. Stampede2 is located at the Texas Advanced Computing Center (TACC) and made available to the user through NHERI DesignSafe, the cyberinfrastructure provider for the distributed NSF funded Natural Hazards in Engineering Research Infrastructure (NHERI) facility.</p>
-<p>The computations are performed, as will be discussed in Technical Manual, in a workflow application. That is, the numerical simulations are actually performed by a number of different applications. The Hydro-UQ app backend software runs these different applications for the user, taking the outputs from some programs and providing them as inputs to others. The design of the Hydro-UQ app application is such that researchers are able to modify the backend application to utilize their own application in the workflow computations. This will ensure researchers are not limited to using the default applications we provide and will be enthused to provide their own applications for others to use.</p>
-<p>This document covers Alpha Version 0.1 of the tool. Users are encouraged to comment on what additional features and capabilities they would like to see in this application. These requests and feedback can be submitted through the <a class="reference external" href="https://simcenter-messageboard.designsafe-ci.org/smf/index.php?board=6.0">Message Board</a> we greatly appreciate any input you have. If there are features you want, chances are many of your colleagues also would benefit from them. Users are encouraged to review <strong>REQUIREMENTS</strong> to see what features are planned for this application.</p>
+<p>OpenFOAM simulations can be prohibitively expensive to perform on a user’s local computer. Thus, CFD Notebooks are  seamlessly integrated to facilitate the learners to perform the computations remotely on the Stampede2 supercomputer. Stampede2 is located at the Texas Advanced Computing Center (TACC) and made available to the user through NHERI DesignSafe, the cyberinfrastructure provider for the distributed NSF funded Natural Hazards in Engineering Research Infrastructure (NHERI) facility.</p>
+<p>This document covers version 1.0 of the tool. Users are encouraged to comment on additional features and capabilities they would like to see in this application. These requests and feedback can be submitted through the <a class="reference external" href="http://simcenter-messageboard.designsafe-ci.org/smf/index.php?board=11.0">Message Board</a> we greatly appreciate any input you have.</p>
 </div>
 
 

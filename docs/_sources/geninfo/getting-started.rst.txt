@@ -1,0 +1,20 @@
+.. _lbl-install:
+
+Getting started with CFDN
+===========================
+
+CFD Notebooks are available as Jupyter notebooks and hosted on Designsafe. The notebooks are almost self-explanatory and does not require the learners to have the knowledge of Python or Jupyter notebooks.
+
+In the below video, it is shown on how to:
+
+- Access the Jupyter notebooks from the Designsafe website
+- Learn how to run the files
+- Learn how to use Jupyter notebook
+- Edit and work with Jupyter notebooks
+- Running jobs on TACC
+
+.. raw:: html
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/dcj99bUHNvY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+In the upcoming lectures, we will work through each topic in detail.
