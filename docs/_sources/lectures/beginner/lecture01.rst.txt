@@ -1,10 +1,28 @@
 .. _lbl-lecture01:
 
-Lecture 01
-========================
+Lecture 01: Getting started
+============================================
 
-The term *tsunami* is derived from two Japanese words, namely "tsu" (meaning harbor) and "nami" (meaning wave). Some of the original literature described them as tidal waves or seismic sea waves. Tsunamis are usually created by disturbances in the crust of the Earth. The resulting uplifting of the water surface over a large area forms a train of the long-period waves. These waves generated from tsunamis have huge wavelengths. In contrast to wind-generated waves, where the periods are about one minute, the periods are of the order of one hour and more. 
+In this lecture, we will learn how to get started and work with the Designsafe interface. 
 
-Once generated, these tsunami waves travel across the ocean basin to cause great destruction at locations far from the source. Owing to their destructive nature, it is imporant to comprehend the mechanisms of their generation, propagation and predict the extent of flooding/effect of wave forces in the coastal areas that are potential to tsunamis. In these areas susceptible to tsunamis, it is imperative to build resilient structures and communities.
+About Designsafe
+-------------------
 
-This documentation compiles some of the basic ideas and information about tsunami events and modeling efforts.
+Designsafe is
+
+About OpenFOAM
+-----------------
+
+OpenFOAM (Open Source Field Operation And Manipulation) is a free, open-source software that uses Finite Volume Method to numerically solve differential equations. It is often used for calculation of problems related to fluid mechanics. It is a collection of C++ programs representing the solvers and the utilities used for data manipulation. Along with solvers and utilities, OpenFOAM also has pre-processing and post-processing capabilities that allow setting up of cases, boundary conditions and also visualize the results. The general structure of OpenFOAM is described in Fig.~\ref{fig:1}.
+
+.. figure:: images/OF_Structure.png
+    :width: 500px
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+Jupyter Notebooks
+-------------------
+
+JupyterLab is a web-based interactive development environment for Jupyter notebooks, code, and data. JupyterLab is flexible: configure and arrange the user interface to support a wide range of workflows in data science, scientific computing, and machine learning. JupyterLab is extensible and modular: write plugins that add new components and integrate with existing ones.
+
