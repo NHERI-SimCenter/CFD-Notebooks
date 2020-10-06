@@ -23,8 +23,8 @@ This is a beginner series in OpenFOAMbut requires a basic knowledge of:
 * Fluid Mechanics
 * Basic knowledge of using a computer
 
-Lecture notebooks
--------------------
+Lecture notebooks (Theory)
+----------------------------
 
 .. toctree::
    :maxdepth: 1
