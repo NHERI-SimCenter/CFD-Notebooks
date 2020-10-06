@@ -25,6 +25,7 @@
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -105,7 +106,8 @@
 <li class="toctree-l3"><a class="reference internal" href="lecture01.html">Lecture 01: Getting started</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Lecture 02: Files and solvers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#case-directories">Case directories</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solvers">Solvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#openfoam-files">OpenFOAM files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#openfoam-solvers">OpenFOAM Solvers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#utilities-and-libraries">Utilities and Libraries</a></li>
 </ul>
 </li>
@@ -198,25 +200,80 @@
 <p>The tools or directories of our present interest are applications and libraries and hence we will only be discussing these in this lecture.</p>
 <div class="section" id="case-directories">
 <h2>Case directories<a class="headerlink" href="#case-directories" title="Permalink to this headline">¶</a></h2>
-<p>This section deals with the file structure and organization of OpenFOAM cases. Normally, a user would assign a name to a case, e.g. the tutorial case of flow in a cavity is simply named cavity. This name becomes the name of a directory in which all the case files and sub-directories are stored. The tutorial cases that accompany the OpenFOAM distribution provide useful examples of the case directory structures.</p>
-<p>The basic directory structure for an OpenFOAM case, that contains the minimum set of files required to run an application is shown in figure below:</p>
+<p>This section deals with the file structure and organization of OpenFOAM cases. Normally, a user would assign a name to a case, e.g. the tutorial case of flow in a cavity is simply named cavity. This name becomes the name of a directory in which all the case files and sub-directories are stored. The tutorial cases that accompany the OpenFOAM distribution provide useful examples of the case directory structures. The basic directory structure for an OpenFOAM case, that contains the minimum set of files required to run an application is shown in figure below:</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="../../_images/CaseFiles.png"><img alt="alternate text" src="../../_images/CaseFiles.png" style="width: 400px;" /></a>
 </div>
 <p>Therefore, any OpenFOAM case must contain the following directories and these are further discussed in detail in the upcoming sub-sections</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">constant</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (Zero)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">system</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
 </ul>
 <div class="section" id="constant-directory">
 <h3><code class="docutils literal notranslate"><span class="pre">constant</span></code> directory<a class="headerlink" href="#constant-directory" title="Permalink to this headline">¶</a></h3>
 <p>The files in the constant directory usually include files that provide information about constants that are used in the project. This include material properties, turbulence properties etc. In the directory <code class="docutils literal notranslate"><span class="pre">polyMesh</span></code>, the mesh data are stored (in this case the data for converted mesh). The boundary file in this <code class="docutils literal notranslate"><span class="pre">polyMesh</span></code> directory includes the mesh boundary data, e.g. type, the patch group, number of faces on this boundary and also starting face number (unique face IDs) for this boundary, e.g. <code class="docutils literal notranslate"><span class="pre">transportProperties</span></code>.</p>
 </div>
+<div class="section" id="zero-directory">
+<h3><code class="docutils literal notranslate"><span class="pre">0</span></code> (Zero) directory<a class="headerlink" href="#zero-directory" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">0</span></code> directory includes the initial conditions for running the simulation. In each file in this folder the initial conditions for one property can be set.</p>
 </div>
-<div class="section" id="solvers">
-<h2>Solvers<a class="headerlink" href="#solvers" title="Permalink to this headline">¶</a></h2>
-<p>Solvers are each designed to solve a specific genre of problem in computational continuum mechanics. OpenFOAM does not have a generic solver applicable to all cases. Instead, users must choose a specific solver for a class of problems to solve. There are flow Solvers as well as non-flow (other) solvers present in the package. The flow solvers include:</p>
+<div class="section" id="time-directories">
+<h3>Time directories<a class="headerlink" href="#time-directories" title="Permalink to this headline">¶</a></h3>
+<p>The time directories appear in the case file after the case is simulated. It can also be used specify initial conditions. The solution files contain solved data for particular fields, e.g.  velocity, temperature, pressure. The data contained are results written to file by OpenFOAM. For example, in the <code class="docutils literal notranslate"><span class="pre">cavity</span></code> tutorial, the velocity field and pressure fields are initialized from files <code class="docutils literal notranslate"><span class="pre">0/U</span></code> and <code class="docutils literal notranslate"><span class="pre">0/p</span></code> respectively.</p>
+</div>
+<div class="section" id="system-directory">
+<h3><code class="docutils literal notranslate"><span class="pre">system</span></code> directory<a class="headerlink" href="#system-directory" title="Permalink to this headline">¶</a></h3>
+<p>This directory is for setting parameters associated with the solution procedure itself. It contains at least the following three files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fvSchemes</span></code>: The discretization scheme which is used for each term of the equations are set in this file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fvSolution</span></code>: This contains the settings to the coupling method of pressure and velocity, the numerical methods, which are used for solving different quantities, and also the final tolerance for convergence of that quantity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">controlDict</span></code>: The texttt{controlDict} dictionary is used to specify the main case controls. This includes, e.g. timing information, write format, and optional libraries that can be loaded at run time.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="openfoam-files">
+<h2>OpenFOAM files<a class="headerlink" href="#openfoam-files" title="Permalink to this headline">¶</a></h2>
+<p>Let us continue to look at the functionality of each file in the OpenFOAM directory. Of particular interest are the files in the system and control directories since these files control the flow of the simulation. We will particularly address the mesh files in the upcoming lectures.</p>
+<div class="section" id="system-fvsolution-file">
+<h3><code class="docutils literal notranslate"><span class="pre">system/fvSolution</span></code> file<a class="headerlink" href="#system-fvsolution-file" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">fvSolution</span></code> file includes the description of solvers, smoothers and relaxation factors. Here solvers refer to the methods that are used to solve the final matrix equations that are obtained from the discretization of the original differential equations. In this regard, there are direct and iterative solvers that can be utilized. Most often, these solvers need pre-processing before the system of equations can be solved. Here, pre-conditioners improve the condition numbers, smoothers reduce the number of iterations required to solve, tolerances are specified to provide value at which convergence is achieved. Thus, the methods required for the pre-conditioners, smoothers and tolerances also need to be provided along with the information about a solver.</p>
+<p>The syntax for each entry within solvers starts with a keyword that is of the variable being solved in the particular equation. For example, <code class="docutils literal notranslate"><span class="pre">icoFoam</span></code> solves equations for velocity and pressure, hence contains the entries for velocity <code class="docutils literal notranslate"><span class="pre">U</span></code> and pressure <code class="docutils literal notranslate"><span class="pre">p</span></code>. The keyword relates to a sub-dictionary containing the type of solver and the parameters that the solver uses. If the user specifies a symmetric solver for an asymmetric matrix, or vice versa, an error message will be written to advise the user accordingly. The following solvers are used for the present version in OpenFOAM:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PCG/PBiCGStab</span></code>: Stabilised preconditioned (bi-)conjugate gradient solver, for both symmetric and asymmetric matrices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PCG/PBiCG</span></code>: Preconditioned (bi-)conjugate gradient, with PCG for symmetric matrices, PBiCG for asymmetric matrices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">smoothSolver</span></code>: solver that uses a smoother. This also requires a smoother to be provided. Some of the smoothers include <code class="docutils literal notranslate"><span class="pre">GaussSeidel</span></code>, <code class="docutils literal notranslate"><span class="pre">symGaussSeidel</span></code>, <code class="docutils literal notranslate"><span class="pre">DIC/DILU</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GAMG</span></code>: The generalized method of Geometric-Algebraic Multi-Grid (GAMG) solvers are faster than standard methods. They solve a solution on a coarser mesh, map this solution onto a finer mesh and then use the mapped solution as a first approximation. Here, GAMG starts with the mesh specified by the user and automatically coarsens or refines the mesh. There are several options available for the GAMG solvers that control the agglomeration of cells. The primary ones include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cacheAgglomeration</span></code>: A switch to specify caching of the agglomeration strategy (default true)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nCellsInCoarsestLevel</span></code>: Approximate mesh size at the coarsest level (default 10)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">directSolveCoarset</span></code>: Switch to use a direct solver at the coarsest level (default false)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mergeLevels</span></code>: It controls the speed and number of levels to be refined at a time (default 1)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>As discussed earlier, when iterative solvers are used, a pre-conditioner is needed to improve the solvability of the system of matrix equations. Pre-conditioning is the application of a transformation, called the pre-conditioner, that conditions a given problem into a form that is more suitable for numerical solving methods. Pre-conditioning is typically related to reducing a condition number of the problem. The pre-conditioned problem is then usually solved by an iterative method. A preconditioned iterative solver solves the system <span class="math notranslate nohighlight">\([M]^{-1}[A]{x} = [M]^{-1}{b}\)</span> with <span class="math notranslate nohighlight">\(M\)</span> being the pre-conditioner. The chosen pre-conditioner should ensure that convergence for the preconditioned system is much faster than for the original one. In simple terms, the pre-conditioner leads to a faster propagation of information through the mesh. The pre-conditioners available in OpenFOAM include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DICPreconditioner</span></code>: A simplifed diagonal-based incomplete Cholesky preconditioner for symmetric matrices (symmetric equivalent of DILU). The reciprocal of the preconditioned diagonal is calculated and stored</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DIC/DILU</span></code>: Diagonal incomplete-Cholesky (symmetric) and incomplete-LU (asymmetric)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GAMG</span></code>: geometric-algebraic multi-grid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code>: no preconditioning</p></li>
+</ul>
+<p>Although the preconditioners can considerably reduce the number of iterations, they do not normally reduce the mesh dependency of the numbers of iterations. OpenFOAM supplies the following smoothers to be used with the solvers and the choice of smoother to be specified. The smoother options are listed below. The <code class="docutils literal notranslate"><span class="pre">symGaussSeidel</span></code> and <code class="docutils literal notranslate"><span class="pre">GaussSeidel</span></code> smoothers are often suitable for general problems and used extensively in the OpenFOAM tutorials. Tohers include, <code class="docutils literal notranslate"><span class="pre">DIC/DILU</span></code> and <code class="docutils literal notranslate"><span class="pre">DICGaussSeidel</span></code>. On aspect to note is that when using the smooth solvers, the user can optionally specify the number of sweeps, by the <code class="docutils literal notranslate"><span class="pre">nSweeps</span></code> keyword, before the residual is recalculated.</p>
+<p>Since the solvers are generally iterative, in nature, we need to further specify when the convergence has been reached. Numerically, we will never reach a zero but reach thresholds like <span class="math notranslate nohighlight">\(10^{-4}, 10^{-8}, 10^{-16}\)</span> and so on. Thus, we need to specify a small number when we can say the convergence has been reached. This is done by specifying the tolerance for the residual. The residual is the measure of the error in the solution. Ideally, it is expected that after each solver iteration, the residual is re-evaluated and is smaller than that of the previous iteration. A solver eventually stops when one of the below three conditions are met:</p>
+<ul class="simple">
+<li><p>The residual falls below the solver tolerance</p></li>
+<li><p>The ratio of the current to the initial residuals falls below the solver’s relative tolerance <code class="docutils literal notranslate"><span class="pre">relTol</span></code></p></li>
+<li><p>The number of iterations exceeds a maximum number of iterations <code class="docutils literal notranslate"><span class="pre">maxIter</span></code></p></li>
+</ul>
+<p>The solver tolerance should represent the level at which the residual is small enough that the solution can be deemed sufficiently accurate. The solver relative tolerance limits the relative improvement from initial to final solution. Most fluid dynamics solver applications in OpenFOAM use either the pressure-implicit split-operator <code class="docutils literal notranslate"><span class="pre">PISO</span></code>, the semi-implicit method for pressure-linked equations <code class="docutils literal notranslate"><span class="pre">SIMPLE</span></code> algorithms, or a combined <code class="docutils literal notranslate"><span class="pre">PIMPLE</span></code> algorithm. Equations are very often solved multiple times within one solution step, or time step. For example, when using the texttt{PISO} algorithm, a pressure equation is solved according to the number specified by texttt{nCorrectors}.</p>
+</div>
+</div>
+<div class="section" id="openfoam-solvers">
+<h2>OpenFOAM Solvers<a class="headerlink" href="#openfoam-solvers" title="Permalink to this headline">¶</a></h2>
+<p>While the word <code class="docutils literal notranslate"><span class="pre">solvers</span></code> is used often and interchangeably in the context of OpenFOAM literature, it should be noted here that we are talking here about a workflow that has been designed to solve a specific genre of problem in computational continuum mechanics. OpenFOAM does not have a generic solver applicable to all types of problems. Instead, users must choose a specific solver for a class of problems to solve. There are flow Solvers as well as non-flow (other) solvers present in the package. The flow solvers include:</p>
 <ul class="simple">
 <li><p>Basic</p></li>
 <li><p>Incompressible</p></li>
