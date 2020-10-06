@@ -272,6 +272,35 @@
 <p>The <code class="docutils literal notranslate"><span class="pre">relaxationFactors</span></code> controls the stability of a computation, particularly in solving steady-state problems. Relaxation factors play a vital role in determining the rate of convergence for CFD simulation. When the relaxation factor is less than one it is said to be under relaxed else it is called over relaxed. When the under relaxed values are applied to the successive iterations of the point iterative techniques such as Gauss-Seidel method, the convergence rate of the solution increases. We will discuss the topic of relaxation further in the advanced tutorials.</p>
 <p>The last topic is of <strong>pressure referencing</strong>. In a closed incompressible system, the pressure is relative. In otherwords, it is the pressure range that matters not the absolute values. In these cases, the solver sets a reference level equal to <code class="docutils literal notranslate"><span class="pre">pRefValue</span></code> in the cell <code class="docutils literal notranslate"><span class="pre">pRefCell</span></code>. These entries are generally stored in the <code class="docutils literal notranslate"><span class="pre">SIMPLE</span></code>, <code class="docutils literal notranslate"><span class="pre">PISO</span></code> or <code class="docutils literal notranslate"><span class="pre">PIMPLE</span></code> sub-dictionaries and are used by those solvers that require them when the case demands it. We will again address these issues later in the advanced tutorials.</p>
 </div>
+<div class="section" id="system-fvschemes-file">
+<h3><code class="docutils literal notranslate"><span class="pre">system/fvSchemes</span></code> file<a class="headerlink" href="#system-fvschemes-file" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">fvSchemes</span></code> file in the system directory sets the numerical schemes for terms, such as derivatives in equations, that are calculated during a simulation. Before going into the layout of <code class="docutils literal notranslate"><span class="pre">fvSchemes</span></code>, it is essential to understand how OpenFOAM accepts or takes inputs of partial differential equations. A central theme of the OpenFOAM design is that the solver applications, written using the OpenFOAM classes, have a syntax that closely resembles the partial differential equations being solved. For example, the equation</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho U }{\partial t} + \nabla \cdot \phi - \nabla \cdot \mu \nabla U = - \nabla p\]</div>
+<p>is represented by the code,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">solve</span>
+<span class="p">(</span>
+    <span class="n">fvm</span><span class="o">::</span><span class="n">ddt</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+  <span class="o">+</span> <span class="n">fvm</span><span class="o">::</span><span class="n">div</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+  <span class="o">-</span> <span class="n">fvm</span><span class="o">::</span><span class="n">laplacian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+    <span class="o">==</span>
+  <span class="o">-</span> <span class="n">fvc</span><span class="o">::</span><span class="n">grad</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The set of terms, for which numerical schemes must be specified, are subdivided within the <code class="docutils literal notranslate"><span class="pre">fvSchemes</span></code> file into the categories below. Each keyword in represents the name of a sub-dictionary which contains terms of a particular type.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">timeScheme</span></code>: First and second time derivatives, e.g. <code class="docutils literal notranslate"><span class="pre">ddt</span></code> for <span class="math notranslate nohighlight">\(\frac{\partial }{\partial t}\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gradSchemes</span></code>: Gradient terms, e.g., <code class="docutils literal notranslate"><span class="pre">grad(p)</span></code>, which represents <span class="math notranslate nohighlight">\(\nabla p\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">divSchemes</span></code>: Divergence terms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">laplacianSchemes</span></code>: Laplacian  terms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpolationSchemes</span></code>: Cell to face interpolations of values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">snGradSchemes</span></code>: Component of gradient normal to a cell face</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wallDist</span></code>: Distance to wall calculation.</p></li>
+</ul>
+<p>A sample file of the <code class="docutils literal notranslate"><span class="pre">fvSchemes</span></code> is shown below to illustrate various schemes</p>
+<p>If a default scheme is specified in a particular <code class="docutils literal notranslate"><span class="pre">Schemes</span></code> sub-dictionary, it is assigned to all of the terms in the sub-dictionary except those terms that are explicitly specified otherwise. We can also specify that no default scheme by the <code class="docutils literal notranslate"><span class="pre">none</span></code> entry. In this section, only the time schemes are discussed. The first time derivative $left( frac{partial }{partial t} right)$ terms are specified in the texttt{ddtSchemes} sub-dictionary. The discretization schemes for each term can be selected from those listed below.</p>
+</div>
 </div>
 <div class="section" id="openfoam-solvers">
 <h2>OpenFOAM Solvers<a class="headerlink" href="#openfoam-solvers" title="Permalink to this headline">¶</a></h2>

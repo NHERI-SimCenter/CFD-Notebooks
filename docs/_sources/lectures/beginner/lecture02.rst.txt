@@ -91,6 +91,74 @@ The ``relaxationFactors`` controls the stability of a computation, particularly 
 
 The last topic is of **pressure referencing**. In a closed incompressible system, the pressure is relative. In otherwords, it is the pressure range that matters not the absolute values. In these cases, the solver sets a reference level equal to ``pRefValue`` in the cell ``pRefCell``. These entries are generally stored in the ``SIMPLE``, ``PISO`` or ``PIMPLE`` sub-dictionaries and are used by those solvers that require them when the case demands it. We will again address these issues later in the advanced tutorials.
 
+``system/fvSchemes`` file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The ``fvSchemes`` file in the system directory sets the numerical schemes for terms, such as derivatives in equations, that are calculated during a simulation. Before going into the layout of ``fvSchemes``, it is essential to understand how OpenFOAM accepts or takes inputs of partial differential equations. A central theme of the OpenFOAM design is that the solver applications, written using the OpenFOAM classes, have a syntax that closely resembles the partial differential equations being solved. For example, the equation
+
+.. math::
+    \frac{\partial \rho U }{\partial t} + \nabla \cdot \phi - \nabla \cdot \mu \nabla U = - \nabla p
+
+is represented by the code,
+
+.. code-block:: c
+
+    solve 
+    ( 
+        fvm::ddt(rho, U) 
+      + fvm::div(phi, U)  
+      - fvm::laplacian(mu, U) 
+        == 
+      - fvc::grad(p) 
+    );
+
+The set of terms, for which numerical schemes must be specified, are subdivided within the ``fvSchemes`` file into the categories below. Each keyword in represents the name of a sub-dictionary which contains terms of a particular type.
+
+* ``timeScheme``: First and second time derivatives, e.g. ``ddt`` for :math:`\frac{\partial }{\partial t}`
+* ``gradSchemes``: Gradient terms, e.g., ``grad(p)``, which represents :math:`\nabla p`
+* ``divSchemes``: Divergence terms
+* ``laplacianSchemes``: Laplacian  terms
+* ``interpolationSchemes``: Cell to face interpolations of values
+* ``snGradSchemes``: Component of gradient normal to a cell face
+* ``wallDist``: Distance to wall calculation.
+
+A sample file of the ``fvSchemes`` is shown below to illustrate various schemes
+
+.. code-block: c
+
+    ddtSchemes
+    {
+        default         Euler;
+    }
+
+    gradSchemes
+    {
+        default         Gauss linear;
+        grad(p)         Gauss linear;
+    }
+
+    divSchemes
+    {
+        default         none;
+        div(phi,U)      Gauss linear;
+    }
+
+    laplacianSchemes
+    {
+        default         Gauss linear orthogonal;
+    }
+
+    interpolationSchemes
+    {
+        default         linear;
+    }
+
+    snGradSchemes
+    {
+        default         orthogonal;
+    }
+
+If a default scheme is specified in a particular ``Schemes`` sub-dictionary, it is assigned to all of the terms in the sub-dictionary except those terms that are explicitly specified otherwise. We can also specify that no default scheme by the ``none`` entry. In this section, only the time schemes are discussed. The first time derivative $\left( \frac{\partial }{\partial t} \right)$ terms are specified in the \texttt{ddtSchemes} sub-dictionary. The discretization schemes for each term can be selected from those listed below.
+
 OpenFOAM Solvers
 -------------------
 While the word ``solvers`` is used often and interchangeably in the context of OpenFOAM literature, it should be noted here that we are talking here about a workflow that has been designed to solve a specific genre of problem in computational continuum mechanics. OpenFOAM does not have a generic solver applicable to all types of problems. Instead, users must choose a specific solver for a class of problems to solve. There are flow Solvers as well as non-flow (other) solvers present in the package. The flow solvers include:
