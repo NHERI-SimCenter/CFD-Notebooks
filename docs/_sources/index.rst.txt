@@ -4,9 +4,11 @@ CFD Notebooks
 
 **Ajay B Harish, Sanjay Govindjee and Frank McKenna**
 
-This educational application is a series of Jupyter notebooks hosted on `DesignSafe <https://www.designsafe-ci.org>`_ that allows learner to get started with the open-source CFD tool OpenFOAM and to run it on Designsafe. It provides a foundation for all aspects of OpenFOAM, from running cases to programming, so is useful to both new users and existing users wishing to broaden their basic knowledge of OpenFOAM. The learners are exposed to running exercises and simulating cases in OpenFOAM using Designsafe's HPC computing platform, accessed directly through the Jupyter notebook. The Jupyter notebooks consist of video tutorials, DIY examples, and general reading materials. This learning tool is truly platform-independent and leverages the power of the cloud.
+CFD Notebooks is an educational application published on Designsafe and available through the `CFD Notebooks Simcenter page <https://simcenter.designsafe-ci.org/learning-tools/cfd-notebooks>`_, and released under a `BSD Clause 2 <geninfo/copyright.html>`__ license. Check out the `Getting started with CFDN <geninfo/getting-started.html>`__ to know more about how to access the application. 
 
-CFDN is set as a series of Jupyter notebooks, with each covering a particular topic. Thus, advanced users can directly jump to topics of interest rather than follow a one-size-fits-all learning process. The topics covered in the beginner notebooks include:
+The CFD Notebooks are a set of Jupyter notebooks aimed at senior undergraduate and early graduate students who are interested in learning OpenFOAM. It is hosted on `DesignSafe <https://www.designsafe-ci.org>`_ that allows learner to get started with the open-source CFD tool OpenFOAM and to run it on Designsafe. It provides a foundation for all aspects of OpenFOAM, from running cases to programming, so is useful to both new users and existing users wishing to broaden their basic knowledge of OpenFOAM. The learners are exposed to running exercises and simulating cases in OpenFOAM using Designsafe's HPC computing platform, accessed directly through the Jupyter notebook. The Jupyter notebooks consist of video tutorials, DIY examples, and general reading materials. This learning tool is truly platform-independent and leverages the power of the cloud.
+
+Each notebook of the CFDN covers a particular topic. Thus, advanced users can directly jump to topics of interest rather than follow a one-size-fits-all learning process. The topics covered in the beginner notebooks include:
 
 - Introduction to OpenFOAM and Designsafe
 - Different solvers in OpenFOAM and which to use?
