@@ -172,7 +172,7 @@ It is important to note here that for any second-order time derivative :math:`\f
 
 The last important file is the ``controlDict``. This controls all the simulation parameters like start and stop times, time interval, time interval for writing outputs and so on.
 
-The \Verb "controlDict"dictionary sets input parameters essential for the creation of the database.
+The ``controlDict`` dictionary sets input parameters essential for the creation of the database.
 
 * ``startFrom`` : This function controls the start time of the simulation.
 * ``startTime``: It is the numerical value of the start time for the simulation.
@@ -180,8 +180,8 @@ The \Verb "controlDict"dictionary sets input parameters essential for the creati
 * ``endTime``: It is the End time for the simulation when stopAt endTime. 
 * ``deltaT``: It is the Time step of the simulation. 
 * ``writeControl``: This function controls the timing of write output to file. 
-* ``writeInterval``: This function is a scalar which is used in conjunction with \Verb "writeControl".
-* ``timeStep``: It writes data every \Verb "writeInterval" time steps.
+* ``writeInterval``: This function is a scalar which is used in conjunction with ``writeControl``.
+* ``timeStep``: It writes data every ``writeInterval`` time steps.
 * ``purgeWrite``: It is an integer representing a limit on the number of time directories that are stored by overwriting time directories on a cyclic basis. 
 * ``writeFormat``: It specifies the format of the data files. 
 * ``Ascii``: ASCII format, written to ``writePrecision`` significant figures. 

@@ -3,4 +3,60 @@
 Lecture 04: blockMesh
 =================================
 
-Coming soon
+``blockMesh`` is one of the most basic mesh generators in OpenFOAM. It relies on a single dictionary file ``blockMeshDict``, usually placed inside the folder ``constant/polyMesh`` or ``constant``. ``blockMesh`` is used to create hexahedral blocks out of the domain, each block containing 8 vertices for each corner of the hexahedron. The ``blockMeshDict`` file contains the following units/keywords that will be discussed in this lecture. 
+
+Keywords in blockmesh
+------------------------
+
+``convertToMeters``
+^^^^^^^^^^^^^^^^^^^^^^^
+
+This is a scaling factor or multiplication factor for all the vertex coordinates, e.g  0.001 scales the geometry to mm.
+
+``vertices``
+^^^^^^^^^^^^^^^^^
+
+This is to specify the co-ordinates of vertices in the three-dimensional block. The vertices are numbered in order from 0 to :math:`n-1`. For example,
+
+.. code-block:: c++
+
+    vertices
+        (
+            ( 0    0    0  )    // vertex number 0
+            ( 1    0    0.1)    // vertex number 1
+            ( 1.1  1    0.1)    // vertex number 2
+            ( 0    1    0.1)    // vertex number 3
+            (-0.1 -0.1  1  )    // vertex number 4
+            ( 1.3  0    1.2)    // vertex number 5
+            ( 1.4  1.1  1.3)    // vertex number 6
+            ( 0    1    1.1)    // vertex number 7
+        );
+
+
+``edges``
+^^^^^^^^^^
+
+A line connecting two vertex points is assumed as a straight line by default on OpenFOAM. However, curved lines can also be specified using the keywords ``arc``, ``spline``, ``polyline`` and ``Bspline``.
+
+``blocks``
+^^^^^^^^^^^^^
+
+Each block definition is a compound entry consisting of a list of vertex labels, a vector giving the number of cells required in each direction, the type and list of cell expansion ratio in each direction. The expansion ratio enables the mesh to be graded, or refined, in specified directions. The ratio is that of the width of the end cell along one edge of a block to the width of the start cell along that edge.
+
+There are two types of grading offered by OpenFOAM, namely:
+
+* ``simpleGrading``: This uniform expansions in the local, and directions respectively with only 3 expansion ratios. 
+* ``edgeGrading``: This option is to give an expansion ratio for each edge of the block.
+
+Each block face is defined by a list of 4 vertex numbers. The order in which the vertices are given must be such that, looking from inside the block and starting with any vertex, the face must be traversed in a clockwise direction to define the other vertices.
+
+``boundary``
+^^^^^^^^^^^^^^^^^
+
+The boundary of the mesh is given in a list named ``boundary``. The boundary is broken into patches (regions), where each patch in the list has its name as the keyword, which is the choice of the user, although we recommend something that conveniently identifies the patch, e.g. inlet; the name is used as an identifier for setting boundary conditions in the field data files. The patch information is then contained in sub-dictionary with:
+
+
+* ``type``: the patch type, either a generic patch on which some boundary conditions are applied or a particular geometric condition, as listed in section
+* ``faces``: a list of block faces that make up the patch and whose name is the choice of the user, although we recommend something that conveniently identifies the patch, e.g. inlet; the name is used as an identifier for setting boundary conditions in the field data files.
+
+The omitted boundary faces are assigned to a patch called ``defaultFaces`` of type ``empty``.

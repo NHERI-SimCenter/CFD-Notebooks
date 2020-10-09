@@ -16,6 +16,8 @@ Designsafe-ci is a new cyberinfrastructure for the natural hazards community. De
     :alt: alternate text
     :figclass: align-center
 
+    Overview of the cyberinfrastructure Designsafe-ci
+
 
 About OpenFOAM
 -----------------
@@ -29,6 +31,8 @@ In a simplistic sense, it is a collection of C++ programs representing the solve
     :align: center
     :alt: alternate text
     :figclass: align-center
+
+    Generic struction of OpenFOAM
 
 There are four main steps involved while using a CFD software:
 
