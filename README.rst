@@ -18,4 +18,6 @@ If there is another topic of interest to you, please share it as a feature reque
 - Application of wavemaker boundary conditions
 - Tutorials on writing custom boundary conditions
 
+On more information on getting started, please check
+
 [![](http://img.youtube.com/vi/dcj99bUHNvY/0.jpg)](http://www.youtube.com/watch?v=dcj99bUHNvY "CFD-Notebooks")
