@@ -312,7 +312,7 @@
 <div class="section" id="system-controldict-file">
 <h3><code class="docutils literal notranslate"><span class="pre">system/controlDict</span></code> file<a class="headerlink" href="#system-controldict-file" title="Permalink to this headline">¶</a></h3>
 <p>The last important file is the <code class="docutils literal notranslate"><span class="pre">controlDict</span></code>. This controls all the simulation parameters like start and stop times, time interval, time interval for writing outputs and so on.</p>
-<p>The Verb “controlDict”dictionary sets input parameters essential for the creation of the database.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">controlDict</span></code> dictionary sets input parameters essential for the creation of the database.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">startFrom</span></code> : This function controls the start time of the simulation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">startTime</span></code>: It is the numerical value of the start time for the simulation.</p></li>
@@ -320,8 +320,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">endTime</span></code>: It is the End time for the simulation when stopAt endTime.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">deltaT</span></code>: It is the Time step of the simulation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">writeControl</span></code>: This function controls the timing of write output to file.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">writeInterval</span></code>: This function is a scalar which is used in conjunction with Verb “writeControl”.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">timeStep</span></code>: It writes data every Verb “writeInterval” time steps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">writeInterval</span></code>: This function is a scalar which is used in conjunction with <code class="docutils literal notranslate"><span class="pre">writeControl</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeStep</span></code>: It writes data every <code class="docutils literal notranslate"><span class="pre">writeInterval</span></code> time steps.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">purgeWrite</span></code>: It is an integer representing a limit on the number of time directories that are stored by overwriting time directories on a cyclic basis.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">writeFormat</span></code>: It specifies the format of the data files.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Ascii</span></code>: ASCII format, written to <code class="docutils literal notranslate"><span class="pre">writePrecision</span></code> significant figures.</p></li>
