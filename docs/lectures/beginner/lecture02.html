@@ -228,7 +228,7 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fvSchemes</span></code>: The discretization scheme which is used for each term of the equations are set in this file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fvSolution</span></code>: This contains the settings to the coupling method of pressure and velocity, the numerical methods, which are used for solving different quantities, and also the final tolerance for convergence of that quantity.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">controlDict</span></code>: The texttt{controlDict} dictionary is used to specify the main case controls. This includes, e.g. timing information, write format, and optional libraries that can be loaded at run time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">controlDict</span></code>: The <code class="docutils literal notranslate"><span class="pre">controlDict</span></code> dictionary is used to specify the main case controls. This includes, e.g. timing information, write format, and optional libraries that can be loaded at run time.</p></li>
 </ul>
 </div>
 </div>
@@ -299,7 +299,43 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">wallDist</span></code>: Distance to wall calculation.</p></li>
 </ul>
 <p>A sample file of the <code class="docutils literal notranslate"><span class="pre">fvSchemes</span></code> is shown below to illustrate various schemes</p>
-<p>If a default scheme is specified in a particular <code class="docutils literal notranslate"><span class="pre">Schemes</span></code> sub-dictionary, it is assigned to all of the terms in the sub-dictionary except those terms that are explicitly specified otherwise. We can also specify that no default scheme by the <code class="docutils literal notranslate"><span class="pre">none</span></code> entry. In this section, only the time schemes are discussed. The first time derivative $left( frac{partial }{partial t} right)$ terms are specified in the texttt{ddtSchemes} sub-dictionary. The discretization schemes for each term can be selected from those listed below.</p>
+<p>If a default scheme is specified in a particular <code class="docutils literal notranslate"><span class="pre">Schemes</span></code> sub-dictionary, it is assigned to all of the terms in the sub-dictionary except those terms that are explicitly specified otherwise. We can also specify that no default scheme by the <code class="docutils literal notranslate"><span class="pre">none</span></code> entry. In this section, only the time schemes are discussed. The first time derivative <span class="math notranslate nohighlight">\(\left( \frac{\partial }{\partial t} \right)\)</span> terms are specified in the <code class="docutils literal notranslate"><span class="pre">ddtSchemes</span></code> sub-dictionary. The discretization schemes for each term can be selected from those listed below.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">steadyState</span></code>: sets time derivatives to zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Euler</span></code>: transient, first order implicit, bounded.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backward</span></code>: transient, second order implicit, potentially unbounded.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CrankNicolson</span></code>: transient, second order implicit, bounded; requires an off-centering coefficient</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">localEuler</span></code>: pseudo transient for accelerating a solution to steady-state using local-time stepping; first order implicit.</p></li>
+</ul>
+<p>It is important to note here that for any second-order time derivative <span class="math notranslate nohighlight">\(\frac{\partial ^ 2 }{\partial t^2}\)</span> terms, only the Euler scheme is available for <code class="docutils literal notranslate"><span class="pre">d2dt2Schemes</span></code>.</p>
+</div>
+<div class="section" id="system-controldict-file">
+<h3><code class="docutils literal notranslate"><span class="pre">system/controlDict</span></code> file<a class="headerlink" href="#system-controldict-file" title="Permalink to this headline">¶</a></h3>
+<p>The last important file is the <code class="docutils literal notranslate"><span class="pre">controlDict</span></code>. This controls all the simulation parameters like start and stop times, time interval, time interval for writing outputs and so on.</p>
+<p>The Verb “controlDict”dictionary sets input parameters essential for the creation of the database.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">startFrom</span></code> : This function controls the start time of the simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startTime</span></code>: It is the numerical value of the start time for the simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stopAt</span></code>: This function controls the end time of the simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endTime</span></code>: It is the End time for the simulation when stopAt endTime.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deltaT</span></code>: It is the Time step of the simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">writeControl</span></code>: This function controls the timing of write output to file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">writeInterval</span></code>: This function is a scalar which is used in conjunction with Verb “writeControl”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeStep</span></code>: It writes data every Verb “writeInterval” time steps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">purgeWrite</span></code>: It is an integer representing a limit on the number of time directories that are stored by overwriting time directories on a cyclic basis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">writeFormat</span></code>: It specifies the format of the data files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ascii</span></code>: ASCII format, written to <code class="docutils literal notranslate"><span class="pre">writePrecision</span></code> significant figures.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">writePrecision</span></code> : It is an integer used in conjunction with <code class="docutils literal notranslate"><span class="pre">writeFormat</span></code>, 6 by default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">writeCompression</span></code>: Switch to specify whether files are compressed with gzip when written: on/off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeFormat</span></code>: It is the choice of format of the naming of the time directories.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">general</span></code>: Specifies scientific format if the exponent is less than -4 or greater than or equal to that specified by <code class="docutils literal notranslate"><span class="pre">timePrecision</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timePrecision</span></code>: It is an integer used in conjunction with <code class="docutils literal notranslate"><span class="pre">timeFormat</span></code> , 6 by default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runTimeModifiable</span></code>: Switch for whether dictionaries, e.g. <code class="docutils literal notranslate"><span class="pre">controlDict</span></code>, are re-read during a simulation at the beginning of each time step, allowing the user to modify parameters during a simulation.</p></li>
+</ul>
+</div>
+<div class="section" id="other-case-files">
+<h3>Other case files<a class="headerlink" href="#other-case-files" title="Permalink to this headline">¶</a></h3>
+<p>The other case files present in the <code class="docutils literal notranslate"><span class="pre">tutorial</span></code> directory for a case are <code class="docutils literal notranslate"><span class="pre">transportProperties</span></code>, <code class="docutils literal notranslate"><span class="pre">turbulenceProperties</span></code> stored in the <code class="docutils literal notranslate"><span class="pre">constant</span></code> sub directory and initial conditions such as initial pressure and velocity magnitude stored in the <code class="docutils literal notranslate"><span class="pre">0</span></code> sub directory. More information about these files will be discussed in the coming lectures.</p>
 </div>
 </div>
 <div class="section" id="openfoam-solvers">

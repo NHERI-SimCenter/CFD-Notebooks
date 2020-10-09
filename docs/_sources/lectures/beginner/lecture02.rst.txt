@@ -47,7 +47,7 @@ This directory is for setting parameters associated with the solution procedure 
 
 * ``fvSchemes``: The discretization scheme which is used for each term of the equations are set in this file.
 * ``fvSolution``: This contains the settings to the coupling method of pressure and velocity, the numerical methods, which are used for solving different quantities, and also the final tolerance for convergence of that quantity.
-* ``controlDict``: The \texttt{controlDict} dictionary is used to specify the main case controls. This includes, e.g. timing information, write format, and optional libraries that can be loaded at run time.
+* ``controlDict``: The ``controlDict`` dictionary is used to specify the main case controls. This includes, e.g. timing information, write format, and optional libraries that can be loaded at run time.
 
 OpenFOAM files
 ------------------
@@ -157,7 +157,44 @@ A sample file of the ``fvSchemes`` is shown below to illustrate various schemes
         default         orthogonal;
     }
 
-If a default scheme is specified in a particular ``Schemes`` sub-dictionary, it is assigned to all of the terms in the sub-dictionary except those terms that are explicitly specified otherwise. We can also specify that no default scheme by the ``none`` entry. In this section, only the time schemes are discussed. The first time derivative $\left( \frac{\partial }{\partial t} \right)$ terms are specified in the \texttt{ddtSchemes} sub-dictionary. The discretization schemes for each term can be selected from those listed below.
+If a default scheme is specified in a particular ``Schemes`` sub-dictionary, it is assigned to all of the terms in the sub-dictionary except those terms that are explicitly specified otherwise. We can also specify that no default scheme by the ``none`` entry. In this section, only the time schemes are discussed. The first time derivative :math:`\left( \frac{\partial }{\partial t} \right)` terms are specified in the ``ddtSchemes`` sub-dictionary. The discretization schemes for each term can be selected from those listed below.
+
+* ``steadyState``: sets time derivatives to zero.
+* ``Euler``: transient, first order implicit, bounded.
+* ``backward``: transient, second order implicit, potentially unbounded.
+* ``CrankNicolson``: transient, second order implicit, bounded; requires an off-centering coefficient  
+* ``localEuler``: pseudo transient for accelerating a solution to steady-state using local-time stepping; first order implicit.
+
+It is important to note here that for any second-order time derivative :math:`\frac{\partial ^ 2 }{\partial t^2}` terms, only the Euler scheme is available for ``d2dt2Schemes``. 
+
+``system/controlDict`` file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The last important file is the ``controlDict``. This controls all the simulation parameters like start and stop times, time interval, time interval for writing outputs and so on.
+
+The \Verb "controlDict"dictionary sets input parameters essential for the creation of the database.
+
+* ``startFrom`` : This function controls the start time of the simulation.
+* ``startTime``: It is the numerical value of the start time for the simulation.
+* ``stopAt``: This function controls the end time of the simulation. 
+* ``endTime``: It is the End time for the simulation when stopAt endTime. 
+* ``deltaT``: It is the Time step of the simulation. 
+* ``writeControl``: This function controls the timing of write output to file. 
+* ``writeInterval``: This function is a scalar which is used in conjunction with \Verb "writeControl".
+* ``timeStep``: It writes data every \Verb "writeInterval" time steps.
+* ``purgeWrite``: It is an integer representing a limit on the number of time directories that are stored by overwriting time directories on a cyclic basis. 
+* ``writeFormat``: It specifies the format of the data files. 
+* ``Ascii``: ASCII format, written to ``writePrecision`` significant figures. 
+* ``writePrecision`` : It is an integer used in conjunction with ``writeFormat``, 6 by default. 
+* ``writeCompression``: Switch to specify whether files are compressed with gzip when written: on/off. 
+* ``timeFormat``: It is the choice of format of the naming of the time directories. 
+* ``general``: Specifies scientific format if the exponent is less than -4 or greater than or equal to that specified by ``timePrecision``.
+* ``timePrecision``: It is an integer used in conjunction with ``timeFormat`` , 6 by default. 
+* ``runTimeModifiable``: Switch for whether dictionaries, e.g. ``controlDict``, are re-read during a simulation at the beginning of each time step, allowing the user to modify parameters during a simulation.
+
+Other case files
+^^^^^^^^^^^^^^^^^^^^
+The other case files present in the ``tutorial`` directory for a case are ``transportProperties``, ``turbulenceProperties`` stored in the ``constant`` sub directory and initial conditions such as initial pressure and velocity magnitude stored in the ``0`` sub directory. More information about these files will be discussed in the coming lectures.
 
 OpenFOAM Solvers
 -------------------
