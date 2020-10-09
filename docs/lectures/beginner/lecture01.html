@@ -107,6 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#about-designsafe">About Designsafe</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#about-openfoam">About OpenFOAM</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#computing-allocations">Computing allocations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="lecture02.html">Lecture 02: Files and solvers</a></li>
@@ -191,18 +192,67 @@
 <p>In this lecture, we will learn how to get started and work with the Designsafe interface.</p>
 <div class="section" id="about-designsafe">
 <h2>About Designsafe<a class="headerlink" href="#about-designsafe" title="Permalink to this headline">¶</a></h2>
-<p>Designsafe is</p>
+<p>Designsafe-ci is a new cyberinfrastructure for the natural hazards community. Designsafe provides cloud-based tools that support support the analysis, visualization, and integration of diverse data types. They support an end-to-end research workflows, enhance, amplify, and link the capabilities of other NHERI components. The designsafe network is as shown below:</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="../../_images/Designsafe-ci.png"><img alt="alternate text" src="../../_images/Designsafe-ci.png" style="width: 500px;" /></a>
+</div>
 </div>
 <div class="section" id="about-openfoam">
 <h2>About OpenFOAM<a class="headerlink" href="#about-openfoam" title="Permalink to this headline">¶</a></h2>
-<p>OpenFOAM (Open Source Field Operation And Manipulation) is a free, open-source software that uses Finite Volume Method to numerically solve differential equations. It is often used for calculation of problems related to fluid mechanics. It is a collection of C++ programs representing the solvers and the utilities used for data manipulation. Along with solvers and utilities, OpenFOAM also has pre-processing and post-processing capabilities that allow setting up of cases, boundary conditions and also visualize the results. The general structure of OpenFOAM is described in Fig.~ref{fig:1}.</p>
+<p>OpenFOAM (Open Source Field Operation And Manipulation) is a free, open-source software that uses Finite Volume Method to numerically solve differential equations. It is often used for calculation of problems related to fluid mechanics. Today, it is not only used at universities but also widely in the industrial sector.</p>
+<p>In a simplistic sense, it is a collection of C++ programs representing the solvers and the utilities used for data manipulation. Along with solvers and utilities, OpenFOAM also has pre-processing and post-processing capabilities that allow setting up of cases, boundary conditions and also visualize the results. The general structure of OpenFOAM is described in the figure below.</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="../../_images/OF_Structure.png"><img alt="alternate text" src="../../_images/OF_Structure.png" style="width: 500px;" /></a>
 </div>
+<p>There are four main steps involved while using a CFD software:</p>
+<ul class="simple">
+<li><p><strong>Pre-processing:</strong> This involves preparing the geometry and the computational model. As a part of this, CAD / BIM models are prepared followed by a clean-up process. The CAD / BIM models are prepared by designers to enable the digital-twinning process and includes all the details of the geometry. However, for the CFD simulations, we do not require all the details. For example, if we have a flow around a building, then the fluid will not interact with the objects inside the building and these can be stripped off. During the clean-up process, the CAD/BIM models are prepared for the necessary simulation. In other words, the wet-volume is extracted as a part of the clean-up process.</p></li>
+<li><p><strong>Meshing:</strong> Here, the geometry is discretized by dividing it into cells. This process of mesh generation and assignment of element types helps us to convert our differential equations (i.e. Navier-Stokes equation) into a matrix equation. In OpenFOAM, this is achieved by two tools, namely <code class="docutils literal notranslate"><span class="pre">blockMesh</span></code> and <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code>. We will discuss about these utilities in Lecture 04 and 05 of the beginner series.</p></li>
+<li><p><strong>Solving:</strong> Once the geometry has been discretized and problem has been defined (i.e. assignment of boundary conditions), the resulting matrix equations are now solved using linear and nonlinear matrix solvers like conjugate gradient etc. We will briefly mention the solvers in Lecture 02 but discuss more about these in the advanced series of this CFD Notebooks.</p></li>
+<li><p><strong>Post-processing:</strong> Once the simulation has completed running, it is necessary to visualize the results and the quantities of interest. In this regard, we will use Paraview as a post-processing tool.</p></li>
+</ul>
+<p>In order to run the siimulations, OpenFOAM uses set of files (called as dictionaries). These dictionaries are arranged in three main folders. We will be discussing all about this in the Lecture 02 of the beginner series.</p>
+<p>In this lecture, we will only on learning the process to submit an OpenFOAM job through our Jupyter notebook and opening the result files using Paraview. In the upcoming lectures, we will see various aspects of OpenFOAM and how to modify them.</p>
 </div>
 <div class="section" id="jupyter-notebooks">
 <h2>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
-<p>JupyterLab is a web-based interactive development environment for Jupyter notebooks, code, and data. JupyterLab is flexible: configure and arrange the user interface to support a wide range of workflows in data science, scientific computing, and machine learning. JupyterLab is extensible and modular: write plugins that add new components and integrate with existing ones.</p>
+<p>JupyterLab is a web-based interactive development environment for Jupyter notebooks, code, and data. JupyterLab is flexible: configure and arrange the user interface to support a wide range of workflows in data science, scientific computing, and machine learning. JupyterLab is extensible and modular: write plugins that add new components and integrate with existing ones. A Jupyter notebook is an interface that connects to the kernel. The kernel executes the code sent by the user and communicate back its results. This kernel is connected and remains active even if the web browser is closed. Once the notebook is opened again, the web application automatically re-connects to the kernel.</p>
+<p>The Jupyter notebooks are made of cells of different types:</p>
+<ul class="simple">
+<li><p><strong>Markdown cells:</strong> These are cells used to write headings, descriptions and comments. These cells do not include python codes that need to be executed. Instead, here a Markdown language is used to define headings, lists, pure HTML and even equations using LaTeX.</p></li>
+<li><p><strong>Code cells:</strong> These are cells that include codes that need to be run. The method to execute these codes is by using Shift-Enter. This will execute the code on the kernel and show the output.</p></li>
+</ul>
+<div class="section" id="common-shortcuts">
+<h3>Common shortcuts<a class="headerlink" href="#common-shortcuts" title="Permalink to this headline">¶</a></h3>
+<p>Some of the common shortcuts include:</p>
+<ul class="simple">
+<li><p><strong>Execute a run:</strong> <code class="docutils literal notranslate"><span class="pre">Shift-Enter</span></code>. Here the current cell is executed, show outputs (if any) and then moves to the next cell.</p></li>
+<li><p><strong>Execute (in place):</strong> <code class="docutils literal notranslate"><span class="pre">Ctrl-Enter</span></code>. Here, the current cell is executed, show outputs (if any) and continues to be in the same cell. Once the execution is complete, the entire block of code is selected and one can start typing over it to execute the next command. This is a terminal style execution.</p></li>
+<li><p><strong>Execute (and add new cell):</strong> <code class="docutils literal notranslate"><span class="pre">Alt-Enter</span></code>. Here, the current cell is executed, show outputs (if any) and creates a new cell below.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="computing-allocations">
+<h2>Computing allocations<a class="headerlink" href="#computing-allocations" title="Permalink to this headline">¶</a></h2>
+<p>Designsafe allocates <strong>8000 service units (SU)</strong> for computing and <strong>50GB</strong> of storage space. 8000 SU’s is crudely 8000 hours of cloud-computing time. To be more precise, 1 SU is equivalent to one hour of wall clock time on a single processor core of time used. The computing times are calculated for all computations run through the Workspace, through Jupyter notebooks or even direct CLI.</p>
+<div class="section" id="additional-allocations">
+<h3>Additional allocations<a class="headerlink" href="#additional-allocations" title="Permalink to this headline">¶</a></h3>
+<p>An additional Allocation on DesignSafe is headed by a project PI, who can be</p>
+<ul class="simple">
+<li><p>NSF Graduate Student Researcher Fellows</p></li>
+<li><p>Research staff employed by federal agencies or non-NSF FFRDCs</p></li>
+<li><p>State educational offices or organizations and local school districts, a teacher or educator at an accredited public or private K-12 school in the USA</p></li>
+<li><p>Independent museums, observatories, libraries, research laboratories, professional societies and similar organizations in the United States that are directly associated with educational or research activities in the USA</p></li>
+<li><p>U.S. commerial organizations, especially small businesses with strong capabilities in scientific or engineering research or education may apply for an allocation</p></li>
+</ul>
+<p>One can request for additional computing allocations by raising a help ticket through the designsafe portal. Please include:</p>
+<ul class="simple">
+<li><p>Information about the eligibility of the requestor</p></li>
+<li><p>A description of the research to be performed</p></li>
+<li><p>Sources of support</p></li>
+<li><p>Justification for the number of SUs requested.</p></li>
+</ul>
+</div>
 </div>
 </div>
 
