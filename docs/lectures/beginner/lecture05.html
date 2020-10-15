@@ -107,7 +107,11 @@
 <li class="toctree-l3"><a class="reference internal" href="lecture02.html">Lecture 02: Files and solvers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lecture03.html">Lecture 03: Boundary conditions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lecture04.html">Lecture 04: blockMesh</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Lecture 05: snappyHexMesh</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lecture 05: snappyHexMesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dictionary-and-folders">Dictionary and folders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-mesh">Creating the mesh</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../beginner.html#references">1.4. References</a></li>
@@ -183,7 +187,68 @@
             
   <div class="section" id="lecture-05-snappyhexmesh">
 <span id="lbl-lecture05"></span><h1>Lecture 05: snappyHexMesh<a class="headerlink" href="#lecture-05-snappyhexmesh" title="Permalink to this headline">¶</a></h1>
-<p>Coming soon</p>
+<p>In the case of flow around complex geometries, the geometries are defined through CAD models. In this case, OpenFOAM has the capability to read Stereolithography (STL) or Wavefront Object (OBJ) formats. In this case, the <code class="docutils literal notranslate"><span class="pre">blockMesh</span></code> utility is insufficient to mesh such complex geometries. Here, OpenFOAM offers a more suitable utility known as the <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code>.</p>
+<p>STL and OBJ CAD files depict the CAD geomeetry in terms of triangulated surfaces. The <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code> utility of OpenFOAM generates three-dimensional meshes containing hexahedra (hex) and split-hexahedra (split-hex) automatically from triangulated surface geometries. To start with the mesh approximately conforms (or snaps) to the surface and is refined by splitting the hex mesh to fit the surface. Additionally, this utility also runs in parallel with a load balancing step during each iteration. The below figure provides a brief outlook into the refinement process of <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code>.</p>
+<div class="align-center figure" id="id1">
+<a class="reference internal image-reference" href="../../_images/snappyHexRefine.png"><img alt="alternate text" src="../../_images/snappyHexRefine.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Overview of the process involved in <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="dictionary-and-folders">
+<h2>Dictionary and folders<a class="headerlink" href="#dictionary-and-folders" title="Permalink to this headline">¶</a></h2>
+<p>The geometry is provided in terms of an STL file. The STL geometry can be generated from any standard geometry (or CAD) modeling software. The STL file can be made up of single surface or multiple surfaces tha describe the geometry. Each of these surfaces are further triangulated. It is preferred to have multiple surfaces as local refinement can be employed to gain more control over the meshng procedure. The STL geometry file is stored in the directory <code class="docutils literal notranslate"><span class="pre">constant/triSurface</span></code>.</p>
+<p>All the parameters related to the meshing utility <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code> are given in the file <code class="docutils literal notranslate"><span class="pre">snappyHexMeshDict</span></code> located in the directory <code class="docutils literal notranslate"><span class="pre">system</span></code>. The castellation, snapping, and boundary layer meshing steps are controlled by the dictionary <code class="docutils literal notranslate"><span class="pre">snappyHexMeshDict</span></code>. The final mesh should be always located in the directory <code class="docutils literal notranslate"><span class="pre">constant/polyMesh</span></code>.</p>
+<p>Before looking at the process of mesh generation, let us explore the <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code> dictionary file. The file is made up of five primary sections. Each section controls one part of the meshing process. Overall, there are over 50 parameters to set in the <code class="docutils literal notranslate"><span class="pre">snappyHexMeshDict</span></code> and lack of GUI can be confusing at times to generate these files. However, once there are a robust set of parameters, the <code class="docutils literal notranslate"><span class="pre">snappyHexMesh</span></code> utility does a great job of generating hexahedron dominated meshes. The general outline of the <code class="docutils literal notranslate"><span class="pre">snappyHexMeshdict</span></code> is as shown below and the upcoming sections will highlight each of the sections in detail.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">castellatedMesh</span> <span class="nb">true</span><span class="p">;</span>
+<span class="n">snap</span> <span class="nb">true</span><span class="p">;</span>
+<span class="n">addLayers</span> <span class="nb">true</span><span class="p">;</span>
+
+<span class="n">geometry</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="n">castellatedMeshControls</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="n">snapControls</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="n">addLayersControls</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="n">meshQualityControls</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The first section of textbf{geometry} outlines the geometric parameters. Here, the section highlights the STL geometry to be used and its location, geometric entities required to create regions, refine mesh and other operation. It is important to note here that multiple STL geometries can be used. This is rather recommended when regional refinements are being used. The STL geometries are located in the directory <code class="docutils literal notranslate"><span class="pre">constant/triSurface</span></code>. The structure of the textbf{geometry} section is as given below:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span>
+<span class="p">{</span>
+    <span class="c1">// STL file to be read</span>
+    <span class="n">geometry</span><span class="p">.</span><span class="n">stl</span>
+    <span class="p">{</span>
+        <span class="n">type</span> <span class="n">triSurfaceMesh</span><span class="p">;</span>
+        <span class="n">name</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-the-mesh">
+<h2>Creating the mesh<a class="headerlink" href="#creating-the-mesh" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
