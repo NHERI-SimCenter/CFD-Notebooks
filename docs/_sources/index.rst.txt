@@ -14,10 +14,10 @@ Each notebook of the CFDN covers a particular topic. Thus, advanced users can di
 - Different solvers in OpenFOAM and which to use?
 - Boundary conditions in OpenFOAM
 - Meshing in OpenFOAM (blockMesh)
-- Meshing in OpenFOAM (snappyHexMesh)
 
 In the next version of CFDN, it will also include content on
 
+- Meshing in OpenFOAM (snappyHexMesh)
 - Importing meshing into OpenFOAM
 - Turbulence models and what are these?
 - Multiphase flows and VOF
@@ -48,7 +48,6 @@ If there is a topic of particular interest to you, please make a feature request
    lectures/intermediate
    lectures/advanced
    lectures/professional
-   lectures/practice-probs
 
 Contact
 =============
