@@ -3,7 +3,7 @@
 Beginner lectures
 ===================
 
-In this beginner series on OpenFOAM, we will help you understand the structure of the OpenFOAM directories and file system, creating boundary conditions, setting up a mesh using ``blockMesh`` and ``snappyHexMesh`` utilities. By the end of the lecture series, you should be able to run sample cases on Designsafe cyberinfrastructure hosted by TACC supercomputer Stampede2.
+In this beginner series on OpenFOAM, we will help you understand the structure of the OpenFOAM directories and file system, creating boundary conditions, setting up a mesh using ``blockMesh`` utility. By the end of the lecture series, you should be able to run sample cases on Designsafe cyberinfrastructure hosted by TACC supercomputer Stampede2.
 
 Learning objectives
 ---------------------
@@ -11,7 +11,7 @@ Upon completion of this beginner series, you should have the ability to:
 
 * Modify the files and file directories of OpenFOAM
 * Modify and setup boundary conditions
-* Mesh using ``blockMesh`` and ``snappyHexMesh`` utilities
+* Mesh using ``blockMesh`` utilities
 * Run OpenFOAM jobs on supercomputing cluster Stampede2
 * Be exposed to Agave API and Jupyter notebooks
 * Visualize OpenFOAM results using Paraview
@@ -33,7 +33,11 @@ Lecture notebooks (Theory)
    beginner/lecture02
    beginner/lecture03
    beginner/lecture04
-   beginner/lecture05
+
+
+Practice problems
+----------------------
+We have also outlined some practice problems and case files that you can use to test your skills. The case files and the solutions can be downloaded separately. For more check out :ref:`lbl-sample-cases`.
 
 References
 -------------
