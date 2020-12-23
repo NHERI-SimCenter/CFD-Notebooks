@@ -11,7 +11,7 @@
    height="20"
    version="1.1"
    id="svg859"
-   sodipodi:docname="68747470733a2f2f6a6f73652e7468656f6a2e6f72672f7061706572732f31302e32313130352f6a6f73652e30303032312f7374617475732e737667.svg"
+   sodipodi:docname="Status.svg"
    inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
    inkscape:export-filename="/Users/ajaybh/Downloads/CFDN-Cite.png"
    inkscape:export-xdpi="96"
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -48,12 +48,13 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="4.2380952"
-     inkscape:cx="108.49524"
-     inkscape:cy="10"
-     inkscape:window-x="3090"
-     inkscape:window-y="176"
+     inkscape:cx="119.51124"
+     inkscape:cy="11.534593"
+     inkscape:window-x="382"
+     inkscape:window-y="327"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg859" />
+     inkscape:current-layer="svg859"
+     inkscape:document-rotation="0" />
   <linearGradient
      id="b"
      x2="0"
@@ -84,17 +85,37 @@
        y="0" />
   </mask>
   <g
-     id="g1640">
-    <path
-       fill="#555555"
-       d="M 0,0 H 76.137641 V 20 H 0 Z"
-       id="path841"
-       style="stroke-width:1.39723;fill:#cb463f;fill-opacity:1" />
-    <path
-       fill="#44cc11"
-       d="M 76.137641,0 H 227.46068 V 20 H 76.137641 Z"
-       id="path843"
-       style="stroke-width:1.08307;fill:#565656;fill-opacity:1" />
+     id="g880">
+    <g
+       id="g872">
+      <rect
+         style="fill:#565656;fill-opacity:1;stroke:none;stroke-width:1.397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2"
+         id="rect865"
+         width="151.32304"
+         height="20"
+         x="76.373596"
+         y="0"
+         rx="3.0674157"
+         ry="3.775281" />
+      <rect
+         style="fill:#cb463f;fill-opacity:1;stroke:none;stroke-width:1.397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2"
+         id="rect863"
+         width="85.575844"
+         height="20"
+         x="-8.5361326e-06"
+         y="0"
+         rx="4.2432737"
+         ry="3.775281" />
+      <rect
+         style="fill:#565656;fill-opacity:1;stroke:none;stroke-width:1.397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2"
+         id="rect867"
+         width="11.873595"
+         height="20"
+         x="76.373596"
+         y="0"
+         rx="1.5466101e-11"
+         ry="1.5606383e-11" />
+    </g>
     <text
        x="37.668537"
        y="13.06958"
