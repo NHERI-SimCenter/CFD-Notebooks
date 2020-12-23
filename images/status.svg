@@ -7,7 +7,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="227.46068"
+   width="257.5592"
    height="20"
    version="1.1"
    id="svg859"
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -47,11 +47,11 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="4.2380952"
-     inkscape:cx="119.51124"
+     inkscape:zoom="2.1190476"
+     inkscape:cx="202.09552"
      inkscape:cy="11.534593"
-     inkscape:window-x="382"
-     inkscape:window-y="327"
+     inkscape:window-x="676"
+     inkscape:window-y="173"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg859"
      inkscape:document-rotation="0" />
@@ -85,44 +85,41 @@
        y="0" />
   </mask>
   <g
-     id="g880">
-    <g
-       id="g872">
-      <rect
-         style="fill:#565656;fill-opacity:1;stroke:none;stroke-width:1.397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2"
-         id="rect865"
-         width="151.32304"
-         height="20"
-         x="76.373596"
-         y="0"
-         rx="3.0674157"
-         ry="3.775281" />
-      <rect
-         style="fill:#cb463f;fill-opacity:1;stroke:none;stroke-width:1.397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2"
-         id="rect863"
-         width="85.575844"
-         height="20"
-         x="-8.5361326e-06"
-         y="0"
-         rx="4.2432737"
-         ry="3.775281" />
-      <rect
-         style="fill:#565656;fill-opacity:1;stroke:none;stroke-width:1.397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2"
-         id="rect867"
-         width="11.873595"
-         height="20"
-         x="76.373596"
-         y="0"
-         rx="1.5466101e-11"
-         ry="1.5606383e-11" />
-    </g>
+     id="g863">
+    <rect
+       style="fill:#565656;fill-opacity:1;stroke:none;stroke-width:1.397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2"
+       id="rect865"
+       width="167.68683"
+       height="20"
+       x="89.872353"
+       y="0"
+       rx="3.3991201"
+       ry="3.775281" />
+    <rect
+       style="fill:#cb463f;fill-opacity:1;stroke:none;stroke-width:1.397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2"
+       id="rect863"
+       width="100.70107"
+       height="20"
+       x="-8.5361335e-06"
+       y="0"
+       rx="4.993257"
+       ry="3.775281" />
+    <rect
+       style="fill:#565656;fill-opacity:1;stroke:none;stroke-width:1.397;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2"
+       id="rect867"
+       width="13.972211"
+       height="20"
+       x="89.872353"
+       y="0"
+       rx="1.8199678e-11"
+       ry="1.5606383e-11" />
     <text
-       x="37.668537"
+       x="45.668537"
        y="13.06958"
        id="text851"
        style="font-size:11px;font-family:'DejaVu Sans', Verdana, Geneva, sans-serif;text-anchor:middle;fill:#ffffff">Designsafe-ci</text>
     <text
-       x="151.57866"
+       x="173.57866"
        y="13.362305"
        id="text855"
        style="font-size:11px;font-family:'DejaVu Sans', Verdana, Geneva, sans-serif;text-anchor:middle;fill:#ffffff">10.17603/ds2-w2x6-nm09</text>
