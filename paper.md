@@ -60,7 +60,7 @@ Today, OpenFOAM is one of the widely used open-source tools for CFD modeling and
 
 The module is broken into multiple sections as beginner/intermediate/expert, and thus, it caters to all categories of learners. At present, only the beginner section is published and only caters to beginner users. However, as an open-source educational tool, this provides a foundation and structure to solicit contributions for newer updated modules from the community as well, alongside our own development.
 
-Most importantly, OpenFOAM simulations are, most often, prohibitively expensive to perform on a user’s local computer. However, it is hard for many student users to access HPC facilities, particularly command-line access (CLI) that provides full flexibility to use OpenFOAM. CFD Notebooks are seamlessly integrated to facilitate the learners to perform the computations remotely on the Teas Advanced Computing Center (TACC) supercomputing facility. The CFD Notebooks users have access to the Stampede and Frontera clusters of the TACC through a Designsafe account. Today, Stampede and Frontera are among the top 20 supercomputers in the world. The access to the (Texas Advanced Computing Center (TACC))[https://www.tacc.utexas.edu] is made available to the user through (NHERI DesignSafe)[https://www.designsafe-ci.org], the cyberinfrastructure provider for the distributed NSF funded Natural Hazards in Engineering Research Infrastructure (NHERI) facility. Designsafe automatically provides 50GB of storage and 2000 node hours for all registered users. This is roughly equivalent to the use of a single processor core for one year. However, researchers and teachers in US institutions can request higher allocations. They can be allocated up to 100,000 node-hours and 100TB and 1TB, respectively, contingent on a positive review of their needs. The additional allocation is also possible for non-US researchers through a collaborative project with a US-based PI. Additionally, Designsafe also allows easy access to data through cloud storage (Box / Dropbox / Google drive), making it easy to copy case directories and results to and from the HPC facility. CFD Notebooks helps learners of OpenFOAM to leverage this access to HPC resources. 
+Most importantly, OpenFOAM simulations are, most often, prohibitively expensive to perform on a user’s local computer. However, it is hard for many student users to access HPC facilities, particularly command-line access (CLI) that provides full flexibility to use OpenFOAM. CFD Notebooks are seamlessly integrated to facilitate the learners to perform the computations remotely on the Teas Advanced Computing Center (TACC) supercomputing facility. The CFD Notebooks users have access to the Stampede and Frontera clusters of the TACC through a Designsafe account. Today, Stampede and Frontera are among the top 20 supercomputers in the world. The access to the [Texas Advanced Computing Center (TACC)](https://www.tacc.utexas.edu) is made available to the user through [NHERI DesignSafe](https://www.designsafe-ci.org), the cyberinfrastructure provider for the distributed NSF funded Natural Hazards in Engineering Research Infrastructure (NHERI) facility. Designsafe automatically provides 50GB of storage and 2000 node hours for all registered users. This is roughly equivalent to the use of a single processor core for one year. However, researchers and teachers in US institutions can request higher allocations. They can be allocated up to 100,000 node-hours and 100TB and 1TB, respectively, contingent on a positive review of their needs. The additional allocation is also possible for non-US researchers through a collaborative project with a US-based PI. Additionally, Designsafe also allows easy access to data through cloud storage (Box / Dropbox / Google drive), making it easy to copy case directories and results to and from the HPC facility. CFD Notebooks helps learners of OpenFOAM to leverage this access to HPC resources. 
 
 Fluid mechanics form a part of the core curriculum for both mechanical and aerospace engineers. However, civil engineering students have much less exposure to fluid mechanics and particularly CFD. However, CFD is a critical aspect of several areas related to civil and geotechnical engineering like modeling water/wind/fire borne natural hazards. This module addresses this need for easier access to fluid mechanics tools and HPC for civil engineering students, particularly those interested in natural hazards engineering. The developed module is funded through the NSF NHERI to ensure that this is a stepping stone to use CFD-based research tools like [Hydro-UQ](https://simcenter.designsafe-ci.org/research-tools/hydro-uq/), [WE-UQ](https://simcenter.designsafe-ci.org/research-tools/we-uq/), etc.
 
@@ -68,9 +68,7 @@ Fluid mechanics form a part of the core curriculum for both mechanical and aeros
 
 THE CFD Notebooks are a series of Jupyter notebooks that include video tutorials, DIY examples, and exercises. Furthermore, sample problems are also provided on the [documentation](https://nheri-simcenter.github.io/CFD-Notebooks/) site.
 
-Four primary aspects facilitate the learner to access and use OpenFOAM on DesignSafe. 
-
-- Login and authentication: Designsafe account acts as authentication to access the HPC resources at TACC. This is achieved through an Agave API client. 
+Four primary aspects facilitate the learner to access and use OpenFOAM on DesignSafe. This starts with login and authentication. Designsafe account acts as authentication to access the HPC resources at TACC. This is achieved through an Agave API client. 
 
 ```python
 from agavepy.agave import Agave
@@ -78,7 +76,7 @@ ag = Agave.restore()
 ag.profiles.get()
 ```
 
-- Once authenticated, the learners can access all the apps and software available for public users on TACC. TACC classifies software (or `apps`) as `public` and `private`. `private` refers to the custom `apps` created by users and can be accessed only if permitted by the user who has created it. In contrast, `public` refers to those that are accessible to all users. The learners can access the list of `apps` and choose the particular version of OpenFOAM of interest. This reduces the requirement to install OpenFOAM on the local computer and facilitates access to the same version anytime. This is achieved again through the Agave API client's usage, which loads the OpenFOAM version of interest.
+Once authenticated, the learners can access all the apps and software available for public users on TACC. TACC classifies software (or `apps`) as `public` and `private`. `private` refers to the custom `apps` created by users and can be accessed only if permitted by the user who has created it. In contrast, `public` refers to those that are accessible to all users. The learners can access the list of `apps` and choose the particular version of OpenFOAM of interest. This reduces the requirement to install OpenFOAM on the local computer and facilitates access to the same version anytime. This is achieved again through the Agave API client's usage, which loads the OpenFOAM version of interest.
 
 ```python
 ag.apps.list()
@@ -87,7 +85,7 @@ app.parameters
 
 ```
 
-- Once the OpenFOAM version of interest is loaded, the job parameters can be provided in a JSON format shown below. This helps TACC HPC automatically generate a runtime script to submit, run, and facilitate the job.
+Once the OpenFOAM version of interest is loaded, the job parameters can be provided in a JSON format shown below. This helps TACC HPC automatically generate a runtime script to submit, run, and facilitate the job.
 
 ```python
 jobdetails = {
@@ -112,7 +110,7 @@ jobdetails = {
 job = ag.jobs.submit(body=jobdetails)
 ```
 
-- The OpenFOAM simulation can be monitored both on the [Designsafe-ci](https://www.designsafe-ci.org/)dashboard or through the CFD Jupyter Notebook. Using the status commands, it can be easily determined with a job has been `QUEUED`, `ACCEPTED`, `RUNNING` or `COMPLETED`.
+The OpenFOAM simulation can be monitored both on the [Designsafe-ci](https://www.designsafe-ci.org/) dashboard or through the CFD Jupyter Notebook. Using the status commands, it can be easily determined with a job has been `QUEUED`, `ACCEPTED`, `RUNNING` or `COMPLETED`.
 
 ```python
 from agavepy.async import AgaveAsyncResponse
