@@ -68,7 +68,7 @@ Fluid mechanics forms a part of the core curriculum for both mechanical and aero
 
 The 
 
-```
+```python
 
 jobdetails = {
 	"name": "OpenFOAM-Demo",
@@ -88,7 +88,7 @@ jobdetails = {
 		}
 }
 
-```python
+```
 
 
 # Recent Uses
