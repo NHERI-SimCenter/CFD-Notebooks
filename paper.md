@@ -9,16 +9,18 @@ tags:
 authors:
 - name: Ajay B. Harish
   orcid: 0000-0001-5234-7047
-  affiliation: 1
+  affiliation: "1, 2"
 - name: Frank McKenna
-  affiliation: 1
+  affiliation: 2
 - name: Sanjay Govindjee
   orcid: 0000-0003-0711-3633
-  affiliation: 1
+  affiliation: "1, 2"
 
 affiliations:
-- name: University of California, Berkeley
+- name: Department of Civil and Environmental Engineering, University of California, Berkeley, CA (USA)
   index: 1
+- name: NHERI SimCenter, University of California, Berkeley, CA (USA)
+  index: 2
 date: 25 Dec 2020
 bibliography: paper.bib
 ---
@@ -29,17 +31,30 @@ The **CFD Notebooks** are a set of Jupyter notebooks aimed at senior undergradua
 
 The notebooks are broken up into various editions, each with four lessons: Beginner / Intermediate / Expert / Professional. At present, only the beginner edition is available. The beginner edition of the notebook includes four lessons:
 
-* Lesson 1: Introduction to OpenFOAM and Designsafe
+* Lesson 1 (Introduction to OpenFOAM and Designsafe): Introduces the learner to basic structure of OpenFOAM and Designsafe cyberinfrastructure. 
 
-* Lesson 2: Different solvers in OpenFOAM and which to use?
+* Lesson 2 (Different solvers in OpenFOAM and which to use?): Helps learner identify different types of solvers in OpenFOAM (laminar vs. turbulent; steady-state vs. transient).
 
-* Lesson 3: Boundary conditions in OpenFOAM
+* Lesson 3 (Boundary conditions in OpenFOAM): While the number of boundary conditions are several, the lesson introduces the learner to the basic boundary conditions and their meaning.
 
-* Lesson 4: Meshing in OpenFOAM (blockMesh)
+* Lesson 4 (Meshing in OpenFOAM (blockMesh)): The lesson introduces the learner to the basics of blockMesh utility in OpenFOAM.
+
+## Learning objectives
+
+Upon completion of this beginner series, you should have the ability to:
+
+- Modify the files and file directories of OpenFOAM
+- Modify and setup boundary conditions
+- Mesh using blockMesh utilities
+- Run OpenFOAM jobs on supercomputing cluster Stampede2
+- Be exposed to Agave API and Jupyter notebooks
+- Visualize OpenFOAM results using Paraview
 
 # Statement of need
 
-There are several tutorials available on Youtube, particularly with regard to the usage of OpenFOAM for CFD. This tutorial is not an alternative to these video tutorials but as a complementary to CFD courses like ``CFD Python: the 12 steps to Navier-Stokes equations'' [@Barba2019].
+There are several tutorials available on Youtube, particularly with regard to the usage of OpenFOAM for CFD. ThE CFD Notebooks are not an alternative to these video tutorials but as a complementary to convetional classroom and online Computational Fluid Dynamics (CFD) courses like ``CFD Python: the 12 steps to Navier-Stokes equations'' [@Barba2019]. 
+
+OpenFOAM simulations can be prohibitively expensive to perform on a user’s local computer. Thus, CFD Notebooks are seamlessly integrated to facilitate the learners to perform the computations remotely on the Stampede2 supercomputer. Stampede2 is located at the Texas Advanced Computing Center (TACC) and made available to the user through NHERI DesignSafe, the cyberinfrastructure provider for the distributed NSF funded Natural Hazards in Engineering Research Infrastructure (NHERI) facility.
 
 # Functionality and usage
 
