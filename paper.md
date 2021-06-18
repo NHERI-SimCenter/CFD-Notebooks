@@ -122,4 +122,8 @@ asrp.status
 
 The CFD Notebooks are planned to be used in the upcoming 2021 HydroUQ tool-training program for researchers in Natural Hazards.
 
+# Acknowledgements
+
+The SimCenter was financially supported by the National Science Foundation under Grant CMMI-1612843. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the National Science Foundation. We would like to acknowledge (1) the contributions and collaboration with many faculty, post-doctoral researchers, students and staff who have contributed to the SimCenter’s work, and (2) the support and close collaboration with DesignSafe, which facilitates access to high-performance computing and information technologies for SimCenter tools.
+
 # References
