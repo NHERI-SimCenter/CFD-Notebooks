@@ -1,0 +1,21 @@
+
+# YAML 1.2
+---
+authors: 
+  -
+    family-names: Harish
+    given-names: "Ajay B"
+    orcid: "https://orcid.org/https://orcid.org/0000-0001-5234-7047"
+  -
+    family-names: Frank
+    given-names: McKenna
+  -
+    family-names: Govindjee
+    given-names: Sanjay
+cff-version: "1.0.0"
+date-released: 2020-10-22
+message: "If you use this software, please cite it using these metadata."
+repository-code: "https://github.com/bhajay/CFD-Notebooks"
+title: "CFD Notebooks"
+version: "v.1.0.0"
+...
